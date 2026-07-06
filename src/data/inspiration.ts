@@ -398,17 +398,19 @@ export const inspirationItems: InspirationItem[] = [
     category: "navigation",
     sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/modern-agency",
     sourceName: "Modern Agency · AndDream",
-    html: `<div class="overlay" id="overlay"><div class="sheet"><div class="time-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>14:32 in Beijing</span></div><a>Projects</a><a>Studio</a><a>Journal</a><a>Connect</a><button>Start a project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div></div><button class="toggle-btn" id="toggle">Menu</button><script>const btn=document.getElementById('toggle'),overlay=document.getElementById('overlay');let open=false;btn.onclick=()=>{open=!open;overlay.style.display=open?'flex':'none';btn.textContent=open?'Close':'Menu'}</script>`,
+    html: `<button class="toggle-btn" id="toggle">Close</button><div class="overlay open" id="overlay"><div class="sheet"><div class="time-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>22:15 in Beijing</span></div><a>Projects</a><a>Studio</a><a>Journal</a><a>Connect</a><button>Start a project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div></div><script>const btn=document.getElementById('toggle'),overlay=document.getElementById('overlay');let open=true;btn.onclick=()=>{open=!open;overlay.classList.toggle('open',open);overlay.classList.toggle('closed',!open);btn.textContent=open?'Close':'Menu'};overlay.onclick=(e)=>{if(e.target===overlay){open=false;overlay.classList.remove('open');overlay.classList.add('closed');btn.textContent='Menu'}}</script>`,
     css: `
       body { background: #EFEFEF; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; }
-      .toggle-btn { background: #111; color: white; border: none; border-radius: 999px; padding: 10px 20px; font-size: 13px; cursor: pointer; }
-      .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); align-items: flex-end; justify-content: center; z-index: 50; font-family: -apple-system, sans-serif; }
-      .sheet { background: white; border-radius: 16px 16px 0 0; margin: 0 12px 12px; padding: 24px; width: 100%; display: flex; flex-direction: column; gap: 16px; }
+      .toggle-btn { background: #111; color: white; border: none; border-radius: 999px; padding: 10px 20px; font-size: 13px; cursor: pointer; position: relative; z-index: 60; }
+      .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: flex-end; justify-content: center; z-index: 50; font-family: -apple-system, sans-serif; transition: opacity 0.5s cubic-bezier(0.32,0.72,0,1); }
+      .overlay.closed { opacity: 0; pointer-events: none; }
+      .overlay.closed .sheet { transform: translateY(100%); }
+      .sheet { background: white; border-radius: 16px 16px 0 0; margin: 0 12px 12px; padding: 24px; width: 100%; display: flex; flex-direction: column; gap: 16px; transition: transform 0.5s cubic-bezier(0.32,0.72,0,1); }
       .time-row { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #555; margin-bottom: 8px; }
       .sheet a { font-size: 28px; font-weight: 500; color: #111; text-decoration: none; }
       .sheet button { display: flex; align-items: center; justify-content: space-between; background: #254E7A; color: white; border: none; border-radius: 999px; padding: 12px 24px; font-size: 14px; margin-top: 8px; cursor: pointer; }
     `,
-    notes: "移动端底部滑出抽屉。黑色半透明遮罩 + 白色圆角底部面板。Framer Motion: translateY 从 100% → 0，缓动 cubic-bezier(0.32,0.72,0,1)。遮罩点击关闭。内含时间、大号导航链接（28-32px）、CTA 按钮。",
+    notes: "手机端菜单：点 Menu → 黑色遮罩落下 + 白色面板从底部滑上来。动画用 CSS transition（translateY 0→100%）+ opacity，缓动 cubic-bezier(0.32,0.72,0,1)。点遮罩空白处也能关闭。桌面端看不到这个（md:hidden），只在手机端出现。",
     tags: ["mobile", "drawer", "bottom sheet", "slide up", "overlay"],
     savedAt: "2026-07-06",
   },
