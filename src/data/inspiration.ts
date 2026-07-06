@@ -327,4 +327,89 @@ export const inspirationItems: InspirationItem[] = [
     tags: ["marquee", "scroll-driven", "parallax", "horizontal scroll", "gallery"],
     savedAt: "2026-07-06",
   },
+
+  // ── 文字翻转按钮（来自 Modern Agency）──
+  {
+    id: "text-roll-button",
+    title: "Text Roll Hover Button",
+    category: "buttons",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/modern-agency",
+    sourceName: "Modern Agency · AndDream",
+    html: `<button id="btn"><span class="roll"><span>Start a project</span><span>Start a project</span></span><span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></button>`,
+    css: `
+      body { background: #EFEFEF; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; }
+      button {
+        display: flex; align-items: center; gap: 8px;
+        background: #254E7A; color: white; border: none;
+        border-radius: 999px; padding: 8px 8px 8px 24px;
+        font-size: 13px; font-weight: 500; cursor: pointer;
+        transition: background 0.5s cubic-bezier(0.25,0.1,0.25,1);
+      }
+      button:hover { background: #1a3d5e; }
+      .roll { display: flex; flex-direction: column; height: 20px; overflow: hidden; }
+      .roll span { display: block; line-height: 20px; transition: transform 0.5s cubic-bezier(0.25,0.1,0.25,1); }
+      button:hover .roll span { transform: translateY(-50%); }
+      .arrow {
+        width: 28px; height: 28px; background: white; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        color: #254E7A; transition: transform 0.5s cubic-bezier(0.25,0.1,0.25,1);
+      }
+      button:hover .arrow { transform: rotate(-45deg); }
+    `,
+    notes: "Hover 时文字向上翻滚（translateY -50%）+ 箭头旋转 -45°。用 flex-col + overflow-hidden + duplicate text 实现。缓动曲线 cubic-bezier(0.25,0.1,0.25,1) 比默认 ease 更干脆。",
+    tags: ["hover", "text roll", "rotate arrow", "pill button", "cubic-bezier"],
+    savedAt: "2026-07-06",
+  },
+
+  // ── 实时时钟（来自 Modern Agency）──
+  {
+    id: "live-clock-navbar",
+    title: "Live Clock in Navbar",
+    category: "navigation",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/modern-agency",
+    sourceName: "Modern Agency · AndDream",
+    html: `<div class="nav"><div class="logo">AD</div><div class="time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span id="clock">14:32 in London</span></div></div><script>setInterval(()=>{document.getElementById('clock').textContent=new Date().toLocaleTimeString('en-GB',{timeZone:'Europe/London',hour:'2-digit',minute:'2-digit',hour12:false})+' in London'},1000)</script>`,
+    css: `
+      body { background: #EFEFEF; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; }
+      .nav {
+        display: flex; align-items: center; justify-content: space-between;
+        background: white; border-radius: 999px; padding: 8px 20px;
+        gap: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      }
+      .logo {
+        width: 36px; height: 36px; background: #111; color: white; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 10px; font-weight: 700; letter-spacing: -0.02em;
+      }
+      .time {
+        display: flex; align-items: center; gap: 6px;
+        font-size: 13px; color: #555; font-variant-numeric: tabular-nums;
+      }
+    `,
+    notes: "导航栏右侧显示实时时钟（伦敦时区），每秒更新。用 setInterval + toLocaleTimeString，带 Clock 图标。药丸形白色 navbar 容器。适合 Agency 类网站增加'全球感'。",
+    tags: ["live clock", "navbar", "timezone", "pill shape", "setInterval"],
+    savedAt: "2026-07-06",
+  },
+
+  // ── 移动端抽屉菜单（来自 Modern Agency）──
+  {
+    id: "mobile-drawer-menu",
+    title: "Mobile Bottom Drawer Menu",
+    category: "navigation",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/modern-agency",
+    sourceName: "Modern Agency · AndDream",
+    html: `<div class="overlay" id="overlay"><div class="sheet"><div class="time-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>14:32 in London</span></div><a>Projects</a><a>Studio</a><a>Journal</a><a>Connect</a><button>Start a project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div></div><button class="toggle-btn" id="toggle">Menu</button><script>const btn=document.getElementById('toggle'),overlay=document.getElementById('overlay');let open=false;btn.onclick=()=>{open=!open;overlay.style.display=open?'flex':'none';btn.textContent=open?'Close':'Menu'}</script>`,
+    css: `
+      body { background: #EFEFEF; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; }
+      .toggle-btn { background: #111; color: white; border: none; border-radius: 999px; padding: 10px 20px; font-size: 13px; cursor: pointer; }
+      .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); align-items: flex-end; justify-content: center; z-index: 50; font-family: -apple-system, sans-serif; }
+      .sheet { background: white; border-radius: 16px 16px 0 0; margin: 0 12px 12px; padding: 24px; width: 100%; display: flex; flex-direction: column; gap: 16px; }
+      .time-row { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #555; margin-bottom: 8px; }
+      .sheet a { font-size: 28px; font-weight: 500; color: #111; text-decoration: none; }
+      .sheet button { display: flex; align-items: center; justify-content: space-between; background: #254E7A; color: white; border: none; border-radius: 999px; padding: 12px 24px; font-size: 14px; margin-top: 8px; cursor: pointer; }
+    `,
+    notes: "移动端底部滑出抽屉。黑色半透明遮罩 + 白色圆角底部面板。Framer Motion: translateY 从 100% → 0，缓动 cubic-bezier(0.32,0.72,0,1)。遮罩点击关闭。内含时间、大号导航链接（28-32px）、CTA 按钮。",
+    tags: ["mobile", "drawer", "bottom sheet", "slide up", "overlay"],
+    savedAt: "2026-07-06",
+  },
 ];
