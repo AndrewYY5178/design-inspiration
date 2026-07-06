@@ -136,31 +136,153 @@ export const inspirationItems: InspirationItem[] = [
     category: "animations",
     sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/3d-jack-portfolio-hero",
     sourceName: "3D Portfolio · AndDream",
-    html: `<p>With more than five years of experience in design, we focus on branding, web design, and AI‑powered experiences.</p>`,
+    html: `<p id="r">With more than five years of experience in design, we focus on branding, web design, and AI‑powered experiences.</p>
+    <script>
+    (function(){
+      const p=document.getElementById('r'),t=p.textContent;
+      p.textContent='';
+      t.split('').forEach((c,i)=>{
+        const s=document.createElement('span');
+        s.textContent=c;s.style.opacity='0.2';
+        p.appendChild(s);
+      });
+      const spans=p.querySelectorAll('span');
+      let dir=1,i=0;
+      function step(){
+        if(i>=spans.length){dir=-1;setTimeout(step,800);return}
+        if(i<0){dir=1;setTimeout(step,500);return}
+        spans[i].style.opacity='1';
+        i+=dir;
+        setTimeout(step,30);
+      }
+      step();
+    })();
+    </script>`,
     css: `
-      body {
-        background: #111;
-        color: #D7E2EA;
-        font-family: -apple-system, sans-serif;
+      body { background: #111; color: #D7E2EA; font-family: -apple-system, sans-serif; display: flex; align-items: center; justify-content: center; padding: 24px; }
+      p { font-size: clamp(0.85rem, 1.8vw, 1.2rem); font-weight: 500; text-align: center; line-height: 1.7; max-width: 560px; }
+      p span { transition: opacity 0.3s ease; }
+    `,
+    notes: "实时页面用 Framer Motion useScroll：每个字符的 opacity 从 0.2 → 1，映射到滚动进度。这里用 JS 循环模拟：正向逐字点亮 → 全部亮起后反向熄灭 → 循环。适合 About / 介绍段落。",
+    tags: ["scroll-driven", "character animation", "opacity", "fade in", "Framer Motion"],
+    savedAt: "2026-07-06",
+  },
+
+  // ── Services 圆角卡片排版（来自 3D Portfolio）──
+  {
+    id: "services-numbered-list",
+    title: "Numbered Service List",
+    category: "cards",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/3d-jack-portfolio-hero",
+    sourceName: "3D Portfolio · AndDream",
+    html: `
+    <section>
+      <h2>Services</h2>
+      <div class="list">
+        <div class="item"><span class="num">01</span><div><h3>AI-Powered Design</h3><p>Leveraging artificial intelligence to create stunning visuals.</p></div></div>
+        <div class="item"><span class="num">02</span><div><h3>Brand Identity</h3><p>Crafting cohesive visual identities from logos to full brand systems.</p></div></div>
+        <div class="item"><span class="num">03</span><div><h3>Web & App Design</h3><p>Clean, modern, conversion-focused websites and applications.</p></div></div>
+      </div>
+    </section>`,
+    css: `
+      body { background: #FAFAF8; font-family: -apple-system, sans-serif; }
+      section {
+        background: #fff;
+        border-radius: 30px 30px 0 0;
+        padding: 40px 20px;
+        max-width: 500px;
+      }
+      h2 {
+        font-family: 'Georgia', serif;
+        font-weight: 900;
+        font-size: clamp(2.5rem, 8vw, 80px);
+        text-transform: uppercase;
+        text-align: center;
+        color: #111;
+        margin-bottom: 40px;
+      }
+      .list { display: flex; flex-direction: column; }
+      .item {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
+        gap: 24px;
+        align-items: flex-start;
+        padding: 24px 0;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+      }
+      .num {
+        font-family: 'Georgia', serif;
+        font-weight: 900;
+        font-size: clamp(2.5rem, 8vw, 80px);
+        color: #111;
+        line-height: 0.8;
+        flex-shrink: 0;
+      }
+      h3 {
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: clamp(0.9rem, 1.6vw, 1.2rem);
+        color: #111;
+        margin-bottom: 4px;
       }
       p {
-        font-size: clamp(1rem, 2vw, 1.35rem);
-        font-weight: 500;
-        text-align: center;
-        line-height: 1.6;
-        max-width: 560px;
-      }
-      /* 每个字符 opacity 0.2 → 1，由 JS 控制 */
-      p span {
-        transition: opacity 0.3s ease;
+        font-weight: 300;
+        color: rgba(0,0,0,0.6);
+        font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+        line-height: 1.5;
+        max-width: 400px;
       }
     `,
-    notes: "用 Framer Motion useScroll + useTransform，每个字符根据其在文本中的位置映射到滚动进度：progress 越过字符位置时，opacity 从 0.2 平滑过渡到 1。关键是 offset: ['start 0.8', 'end 0.2'] 让动画在元素进入视口时触发。适合 About / 介绍段落。",
-    tags: ["scroll-driven", "character animation", "opacity", "fade in", "Framer Motion"],
+    notes: "白底圆角卡片（rounded top）+ 大数字编号 + 服务名 + 描述。Playfair 数字 + 无衬线正文的混搭。分隔线用 10% 黑色。每个 item 依次 FadeIn，delay 递增 0.1s。黑白交替区块过渡：上方深色 → 这里白色圆角顶部。",
+    tags: ["layout", "numbered list", "rounded corners", "Playfair Display", "staggered fade"],
+    savedAt: "2026-07-06",
+  },
+
+  // ── Projects 卡片堆叠（来自 3D Portfolio）──
+  {
+    id: "sticky-stacking-cards",
+    title: "Sticky Stacking Cards",
+    category: "cards",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/3d-jack-portfolio-hero",
+    sourceName: "3D Portfolio · AndDream",
+    html: `
+    <div class="stack">
+      <div class="card c3">03<span>Solaris Digital</span></div>
+      <div class="card c2">02<span>Aura Brand</span></div>
+      <div class="card c1">01<span>Nextlevel Studio</span></div>
+    </div>
+    <script>
+    (function(){
+      const cards=document.querySelectorAll('.card');
+      let step=0;
+      function cycle(){
+        cards.forEach((c,i)=>{
+          const offset=(step+i)%3;
+          c.style.transform='scale('+(1-offset*0.03)+') translateY('+(-offset*8)+'px)';
+          c.style.zIndex=3-offset;
+          c.style.opacity=offset===2?'0.7':'1';
+        });
+        step=(step+1)%3;
+        setTimeout(cycle,2000);
+      }
+      cycle();
+    })();
+    </script>`,
+    css: `
+      body { background: #111; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; }
+      .stack { position: relative; width: 280px; height: 200px; }
+      .card {
+        position: absolute; inset: 0;
+        background: #111; border: 2px solid #D7E2EA;
+        border-radius: 30px; padding: 20px;
+        display: flex; flex-direction: column; gap: 8px;
+        color: #D7E2EA; font-weight: 900; font-size: clamp(2rem, 6vw, 3rem);
+        font-family: 'Georgia', serif;
+        transition: transform 0.7s cubic-bezier(0.25,0.1,0.25,1), opacity 0.7s ease;
+      }
+      .card span { font-size: 14px; font-weight: 400; font-family: -apple-system, sans-serif; text-transform: uppercase; color: rgba(215,226,234,0.7); }
+    `,
+    notes: "3 张卡片 sticky 堆叠，滚动时逐层缩小（scale = 1 - (totalCards-1-index) * 0.03）。每层 offset 28px。Framer Motion useScroll + useTransform 驱动。这里用 JS 循环模拟缩放切换。深色背景 + 2px 浅灰蓝描边 + 60px 大圆角。",
+    tags: ["sticky", "stacking cards", "scroll-driven", "scale transform", "Framer Motion"],
     savedAt: "2026-07-06",
   },
 ];

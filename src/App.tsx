@@ -22,7 +22,8 @@ function LivePreview({ item }: { item: InspirationItem }) {
 
   const srcDoc = `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>
     *{margin:0;padding:0;box-sizing:border-box}
-    body{display:flex;align-items:center;justify-content:center;min-height:100%;background:transparent;font-family:-apple-system,sans-serif}
+    html,body{height:100%}
+    body{display:flex;align-items:center;justify-content:center;background:transparent;font-family:-apple-system,sans-serif}
     ${item.css}
   </style></head><body>${item.html}</body></html>`;
 
