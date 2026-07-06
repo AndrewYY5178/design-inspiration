@@ -285,4 +285,46 @@ export const inspirationItems: InspirationItem[] = [
     tags: ["sticky", "stacking cards", "scroll-driven", "scale transform", "Framer Motion"],
     savedAt: "2026-07-06",
   },
+
+  // ── Marquee 双排横滚（来自 3D Portfolio）──
+  {
+    id: "dual-marquee-scroll",
+    title: "Dual Marquee Scroll",
+    category: "animations",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/3d-jack-portfolio-hero",
+    sourceName: "3D Portfolio · AndDream",
+    html: `
+    <div class="marquee">
+      <div class="row r1"><div class="tile">01</div><div class="tile">02</div><div class="tile">03</div><div class="tile">04</div><div class="tile">05</div><div class="tile">06</div></div>
+      <div class="row r2"><div class="tile">A</div><div class="tile">B</div><div class="tile">C</div><div class="tile">D</div><div class="tile">E</div><div class="tile">F</div></div>
+    </div>
+    <script>
+    (function(){
+      const r1=document.querySelector('.r1'),r2=document.querySelector('.r2');
+      let t=0;
+      function loop(){
+        t+=0.3;
+        r1.style.transform='translateX('+(t%600)+'px)';
+        r2.style.transform='translateX('+(-t%600)+'px)';
+        requestAnimationFrame(loop);
+      }
+      loop();
+    })();
+    </script>`,
+    css: `
+      body { background: #111; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+      .marquee { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+      .row { display: flex; gap: 8px; width: max-content; will-change: transform; }
+      .tile {
+        width: 140px; height: 90px; border-radius: 12px; flex-shrink: 0;
+        background: linear-gradient(135deg, #1a1a2e, #254E7A);
+        display: flex; align-items: center; justify-content: center;
+        color: rgba(255,255,255,0.6); font-family: 'Georgia', serif;
+        font-size: 24px; font-weight: 900;
+      }
+    `,
+    notes: "两排图片/卡片水平无限滚动，上排右移、下排左移。速度由 window.scrollY 驱动（offset = (scrollY - sectionTop + innerHeight) * 0.3），形成视差横滚效果。每排图片 tripled 实现无缝循环。适合作品集/项目展示。",
+    tags: ["marquee", "scroll-driven", "parallax", "horizontal scroll", "gallery"],
+    savedAt: "2026-07-06",
+  },
 ];
