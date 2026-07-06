@@ -368,7 +368,7 @@ export const inspirationItems: InspirationItem[] = [
     category: "navigation",
     sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/modern-agency",
     sourceName: "Modern Agency · AndDream",
-    html: `<div class="nav"><div class="logo">AD</div><div class="time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span id="clock">14:32 in London</span></div></div><script>setInterval(()=>{document.getElementById('clock').textContent=new Date().toLocaleTimeString('en-GB',{timeZone:'Europe/London',hour:'2-digit',minute:'2-digit',hour12:false})+' in London'},1000)</script>`,
+    html: `<div class="nav"><div class="logo">AD</div><div class="time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span id="clock">14:32 in London</span></div></div><script>setInterval(()=>{document.getElementById('clock').textContent=new Date().toLocaleTimeString('en-GB',{timeZone:'Asia/Shanghai',hour:'2-digit',minute:'2-digit',hour12:false})+' in Beijing'},1000)</script>`,
     css: `
       body { background: #EFEFEF; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; }
       .nav {
@@ -386,7 +386,7 @@ export const inspirationItems: InspirationItem[] = [
         font-size: 13px; color: #555; font-variant-numeric: tabular-nums;
       }
     `,
-    notes: "导航栏右侧显示实时时钟（伦敦时区），每秒更新。用 setInterval + toLocaleTimeString，带 Clock 图标。药丸形白色 navbar 容器。适合 Agency 类网站增加'全球感'。",
+    notes: "导航栏右侧显示实时时钟（北京时区），每秒更新。用 setInterval + toLocaleTimeString，带 Clock 图标。药丸形白色 navbar 容器。适合 Agency 类网站增加全球感。",
     tags: ["live clock", "navbar", "timezone", "pill shape", "setInterval"],
     savedAt: "2026-07-06",
   },
@@ -398,7 +398,7 @@ export const inspirationItems: InspirationItem[] = [
     category: "navigation",
     sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/modern-agency",
     sourceName: "Modern Agency · AndDream",
-    html: `<div class="overlay" id="overlay"><div class="sheet"><div class="time-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>14:32 in London</span></div><a>Projects</a><a>Studio</a><a>Journal</a><a>Connect</a><button>Start a project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div></div><button class="toggle-btn" id="toggle">Menu</button><script>const btn=document.getElementById('toggle'),overlay=document.getElementById('overlay');let open=false;btn.onclick=()=>{open=!open;overlay.style.display=open?'flex':'none';btn.textContent=open?'Close':'Menu'}</script>`,
+    html: `<div class="overlay" id="overlay"><div class="sheet"><div class="time-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>14:32 in Beijing</span></div><a>Projects</a><a>Studio</a><a>Journal</a><a>Connect</a><button>Start a project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div></div><button class="toggle-btn" id="toggle">Menu</button><script>const btn=document.getElementById('toggle'),overlay=document.getElementById('overlay');let open=false;btn.onclick=()=>{open=!open;overlay.style.display=open?'flex':'none';btn.textContent=open?'Close':'Menu'}</script>`,
     css: `
       body { background: #EFEFEF; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; }
       .toggle-btn { background: #111; color: white; border: none; border-radius: 999px; padding: 10px 20px; font-size: 13px; cursor: pointer; }
