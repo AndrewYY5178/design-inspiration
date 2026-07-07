@@ -886,4 +886,74 @@ export const inspirationItems: InspirationItem[] = [
     tags: ["scroll-driven", "character opacity", "useTransform", "progressive reveal", "About"],
     savedAt: "2026-07-07",
   },
+
+  // ── 视频淡入淡出无缝循环（来自 Innovation Landing）──
+  {
+    id: "video-crossfade-loop",
+    title: "Video Crossfade Loop",
+    category: "animations",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/innovation-landing",
+    sourceName: "Innovation Landing · AndDream",
+    html: `<div class="player"><div class="bar"></div><p>Seamless loop with crossfade</p></div><script>(function(){const bar=document.querySelector('.bar');let pos=0,dir=1;function loop(){pos+=dir*0.5;if(pos>=100){dir=-1;setTimeout(()=>{pos=100},100)}if(pos<=0){dir=1;setTimeout(()=>{pos=0},100)}bar.style.width=pos+'%';bar.style.opacity=pos>90||pos<10?(10-Math.abs(pos-5))/10+'':'';requestAnimationFrame(loop)}loop()})()</script>`,
+    css: `
+      body { background: black; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 24px; font-family: -apple-system, sans-serif; min-height: 100%; }
+      .player { width: 280px; height: 160px; background: #111; border-radius: 16px; overflow: hidden; position: relative; display: flex; align-items: flex-end; }
+      .bar { height: 4px; background: #4A78B0; position: absolute; bottom: 0; left: 0; border-radius: 0 2px 2px 0; transition: opacity 0.1s; }
+      p { color: rgba(255,255,255,0.4); font-size: 12px; position: relative; z-index: 1; padding: 12px; }
+    `,
+    notes: "用 JS requestAnimationFrame 实现视频无缝循环：timeupdate 检测剩余时间 ≤ 0.55s → 淡出到 opacity:0；ended → 重置 currentTime → 重新播放 + 淡入到 1。每次过渡 500ms。比原生 loop 属性更平滑，消除'跳回开头'的顿挫感。关键是 0.55s 的提前量让淡出有足够时间。",
+    tags: ["video", "crossfade", "requestAnimationFrame", "seamless loop", "canvas-style"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── Liquid Glass 输入框（来自 Innovation Landing）──
+  {
+    id: "liquid-glass-input",
+    title: "Liquid Glass Email Input",
+    category: "forms",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/innovation-landing",
+    sourceName: "Innovation Landing · AndDream",
+    html: `<div class="input-wrap"><input placeholder="Enter your email" /><button><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>`,
+    css: `
+      body { background: black; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; }
+      .input-wrap {
+        display: flex; align-items: center; gap: 8px; padding: 8px 8px 8px 24px;
+        border-radius: 999px; width: 400px; max-width: 100%;
+        background: rgba(255,255,255,0.01); backdrop-filter: blur(4px);
+        box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+        position: relative; overflow: hidden;
+      }
+      .input-wrap::before {
+        content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1.4px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+      }
+      input { flex: 1; background: transparent; border: none; outline: none; color: white; font-size: 14px; position: relative; }
+      input::placeholder { color: rgba(255,255,255,0.4); }
+      button { background: white; border: none; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; color: black; cursor: pointer; flex-shrink: 0; position: relative; transition: background 0.2s; }
+      button:hover { background: #e5e5e5; }
+    `,
+    notes: "liquid-glass pill 输入框：左侧透明 input + 右侧白色圆形提交按钮。整体用 liquid-glass 渐变边框包裹。placeholder 半透明白色，输入文字白色。适合 Newsletter 订阅、搜索框等暗色背景上的表单。",
+    tags: ["input", "glass", "newsletter", "pill shape", "subscription form"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 字体混排（来自 Innovation Landing · About）──
+  {
+    id: "italic-font-mixing",
+    title: "Italic / Normal Font Mixing",
+    category: "headings",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/innovation-landing",
+    sourceName: "Innovation Landing · AndDream",
+    html: `<h2>Pioneering <em>ideas</em> for<br/>minds that <em>create</em>, <em>build</em>, and <em>inspire</em>.</h2>`,
+    css: `
+      body { background: black; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; padding: 24px; }
+      h2 { font-size: clamp(32px, 5vw, 56px); line-height: 1.1; letter-spacing: -0.02em; color: white; font-weight: 400; max-width: 700px; text-align: center; font-family: 'Georgia', serif; }
+      em { font-style: italic; color: rgba(255,255,255,0.6); font-weight: 400; }
+    `,
+    notes: "同一标题中普通体（white）和斜体（white/60）交替使用。用 `<em>` 标签包裹关键词，斜体降低透明度制造'轻音'感。适合大标题——关键词用斜体像'旁白'一样飘过，比全加粗更优雅。Font pairing：Instrument Serif / Playfair Display 等衬线体效果最好。",
+    tags: ["italic", "font mixing", "emphasis", "heading", "serif"],
+    savedAt: "2026-07-07",
+  },
 ];
