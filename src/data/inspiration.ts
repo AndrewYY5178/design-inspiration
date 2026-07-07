@@ -1151,4 +1151,86 @@ export const inspirationItems: InspirationItem[] = [
     tags: ["mixed fonts", "cursive accent", "indented", "section heading", "contrast"],
     savedAt: "2026-07-07",
   },
+
+  // ── 数字计数加载屏（来自 Portfolio Cosmic）──
+  {
+    id: "counter-loading-screen",
+    title: "Counter Loading Screen",
+    category: "animations",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/portfolio-cosmic-hero",
+    sourceName: "Portfolio Cosmic · AndDream",
+    html: `<div class="screen"><span class="label">Portfolio</span><span class="word" id="w">Design</span><div class="counter"><span class="num" id="n">000</span><div class="bar"><div class="fill" id="f"></div></div></div></div><script>(function(){const n=document.getElementById('n'),f=document.getElementById('f'),w=document.getElementById('w'),words=['Design','Create','Inspire'];let c=0,wi=0,s=performance.now();setInterval(()=>{wi=(wi+1)%3;w.textContent=words[wi]},900);function tick(){const p=Math.min((performance.now()-s)/2700,1);c=Math.floor(p*100);n.textContent=String(c).padStart(3,'0');f.style.transform='scaleX('+(c/100)+')';if(p<1)requestAnimationFrame(tick)}tick()})()</script>`,
+    css: `
+      body { background: #0a0a0a; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; color: white; }
+      .screen { position: relative; width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; }
+      .label { position: absolute; top: 24px; left: 24px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.3em; color: #666; }
+      .word { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(36px, 6vw, 64px); color: rgba(255,255,255,0.8); }
+      .counter { position: absolute; bottom: 32px; right: 32px; text-align: right; }
+      .num { font-family: 'Georgia', serif; font-size: clamp(48px, 8vw, 96px); display: block; font-variant-numeric: tabular-nums; }
+      .bar { width: 192px; height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-top: 8px; overflow: hidden; }
+      .fill { height: 100%; background: linear-gradient(90deg, #4A78B0, #254E7A); box-shadow: 0 0 8px rgba(74,120,176,0.35); transform-origin: left; transform: scaleX(0); }
+    `,
+    notes: "加载屏：数字从 000 用 requestAnimationFrame 计数到 100（2700ms），用 padStart(3,'0') 保证三位数。下方渐变进度条 scaleX 从 0→1 同步。中央单词每 900ms 轮换（Design→Create→Inspire），AnimatePresence 做过渡。左上角标签 + 右下角计数器构成对角线构图。完成后 400ms 延迟触发 onComplete。",
+    tags: ["loading screen", "counter", "progress bar", "requestAnimationFrame", "preloader"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 单词轮换动画（来自 Portfolio Cosmic）──
+  {
+    id: "cycling-words-animation",
+    title: "Cycling Words Animation",
+    category: "animations",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/portfolio-cosmic-hero",
+    sourceName: "Portfolio Cosmic · AndDream",
+    html: `<span id="cw">Design</span><script>(function(){const w=document.getElementById('cw'),words=['Design','Create','Inspire'];let i=0;setInterval(()=>{i=(i+1)%3;w.style.opacity='0';w.style.transform='translateY(8px)';setTimeout(()=>{w.textContent=words[i];w.style.opacity='1';w.style.transform='translateY(0)'},200)},900)})()</script>`,
+    css: `
+      body { background: #0a0a0a; display: flex; align-items: center; justify-content: center; font-family: 'Georgia', serif; font-style: italic; min-height: 100%; }
+      span { font-size: clamp(36px, 6vw, 64px); color: rgba(255,255,255,0.8); transition: all 0.4s ease-out; }
+    `,
+    notes: "单词每 900ms 轮换一次：先淡出 + 下移 → 替换文字 → 淡入 + 回位。用 AnimatePresence mode='wait' 确保上一个完全消失后下一个才出现。适合加载屏或 Hero 的'我是一名 ___'职位的动态展示。",
+    tags: ["cycling", "word swap", "AnimatePresence", "role display", "loading"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 悬浮药丸导航（来自 Portfolio Cosmic）──
+  {
+    id: "floating-pill-nav-glow",
+    title: "Floating Pill Nav with Glow",
+    category: "navigation",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/portfolio-cosmic-hero",
+    sourceName: "Portfolio Cosmic · AndDream",
+    html: `<nav><div class="logo">AD</div><span class="sep"></span><a class="active">Home</a><a>Work</a><a>Resume</a><span class="sep"></span><button>Say hi ↗</button></nav>`,
+    css: `
+      body { background: #0a0a0a; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; }
+      nav { display: inline-flex; align-items: center; gap: 2px; padding: 8px; border-radius: 999px; backdrop-filter: blur(12px); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); }
+      .logo { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Georgia', serif; font-style: italic; font-size: 13px; color: white; background: linear-gradient(90deg, #4A78B0, #254E7A); position: relative; }
+      .sep { width: 1px; height: 20px; background: rgba(255,255,255,0.1); margin: 0 4px; }
+      a { font-size: 13px; padding: 6px 16px; border-radius: 999px; color: #999; cursor: pointer; transition: all 0.2s; }
+      a.active { color: white; background: rgba(255,255,255,0.1); }
+      a:hover:not(.active) { color: white; background: rgba(255,255,255,0.05); }
+      button { font-size: 13px; padding: 6px 16px; border-radius: 999px; color: #999; cursor: pointer; border: none; background: transparent; position: relative; transition: all 0.2s; }
+      button:hover { color: white; }
+    `,
+    notes: "悬浮在页面顶部中央的药丸导航：backdrop-blur + 半透明白底 + 1px 白边框。Logo 用渐变圆形，导航链接 active 态有浅色背景。'Say hi' 按钮 hover 时外层出现渐变光环（absolute 伪元素 + inset -2px + 渐变背景）。滚动超过 100px 时加 shadow。",
+    tags: ["floating", "pill", "navbar", "blur", "gradient hover"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 角色轮换文字（来自 Portfolio Cosmic）──
+  {
+    id: "role-rotating-text",
+    title: "Role Rotating Text",
+    category: "animations",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/portfolio-cosmic-hero",
+    sourceName: "Portfolio Cosmic · AndDream",
+    html: `<p>A <span id="role">Creative</span> lives in Shanghai.</p><script>(function(){const r=document.getElementById('role'),roles=['Creative','Designer','Builder','Dreamer'];let i=0;setInterval(()=>{i=(i+1)%4;r.style.opacity='0';r.style.transform='translateY(8px)';setTimeout(()=>{r.textContent=roles[i];r.style.opacity='1';r.style.transform='translateY(0)'},200)},2000)})()</script>`,
+    css: `
+      body { background: #0a0a0a; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; }
+      p { color: #999; font-size: 16px; }
+      span { font-family: 'Georgia', serif; font-style: italic; color: white; display: inline-block; transition: all 0.4s ease-out; }
+    `,
+    notes: "句子中嵌入一个轮换词：'A ___ lives in Shanghai.'，每 2s 切换一次。角色词用斜体衬线体 + 白色突出，与正文灰色无衬线形成对比。用 AnimatePresence 做淡入淡出 + 微上移。适合 Hero 区个人介绍——展示多重身份（设计师/开发者/创始人...）。",
+    tags: ["rotating", "role", "italic", "sentence", "identity"],
+    savedAt: "2026-07-07",
+  },
 ];
