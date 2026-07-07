@@ -41,13 +41,16 @@ function LivePreview({ item }: { item: InspirationItem }) {
           scrolling="no"
         />
       </div>
-      {/* Hover hint */}
-      <div className="absolute top-2 right-2 opacity-0 group-hover/preview:opacity-100 transition-opacity duration-200 pointer-events-none">
-        <div className="bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-full flex items-center gap-1">
+      {/* Click to view full page */}
+      <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer"
+        onClick={(e) => e.stopPropagation()}
+        className="absolute top-2 right-2 z-10 cursor-pointer"
+        title="Open full page">
+        <div className="bg-black/60 hover:bg-black/80 text-white text-[10px] px-2 py-0.5 rounded-full flex items-center gap-1 transition-all opacity-0 group-hover/preview:opacity-100">
           <Maximize2 className="w-3 h-3" strokeWidth={1.5} />
-          Live
+          Full page ↗
         </div>
-      </div>
+      </a>
     </div>
   );
 }
