@@ -103,26 +103,15 @@ export const inspirationItems: InspirationItem[] = [
     css: `
       body { background: #111; display: flex; align-items: center; justify-content: center; }
       button {
-        position: relative;
-        padding: 12px 48px;
-        border: none;
-        border-radius: 999px;
-        font-size: 14px;
-        font-weight: 500;
-        font-family: -apple-system, sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        color: white;
-        cursor: pointer;
+        position: relative; padding: 12px 48px; border: none; border-radius: 999px;
+        font-size: 14px; font-weight: 500; font-family: -apple-system, sans-serif;
+        text-transform: uppercase; letter-spacing: 0.15em; color: white; cursor: pointer;
         background: linear-gradient(123deg, #18011F 7%, #254E7A 37%, #4A78B0 72%, #1A1A1A 100%);
-        box-shadow:
-          0px 4px 4px rgba(37,78,122,0.25),
-          inset 4px 4px 12px #254E7A;
-        outline: 2px solid white;
-        outline-offset: -3px;
-        transition: opacity 0.2s ease;
+        box-shadow: 0px 4px 4px rgba(37,78,122,0.25), inset 4px 4px 12px #254E7A;
+        outline: 2px solid white; outline-offset: -3px;
+        transition: opacity 0.2s ease, transform 0.2s ease;
       }
-      button:hover { opacity: 0.8; }
+      button:hover { opacity: 0.85; transform: scale(1.03); }
     `,
     notes: "渐变背景（深紫→靛蓝→浅蓝→深灰）+ 内阴影发光 + 白色双层描边（outline + offset）。层次感极强，适合主 CTA。可替换渐变色标适配品牌。",
     tags: ["CTA", "gradient", "pill button", "outline", "inner shadow"],
@@ -1159,18 +1148,18 @@ export const inspirationItems: InspirationItem[] = [
     category: "animations",
     sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/portfolio-cosmic-hero",
     sourceName: "Portfolio Cosmic · AndDream",
-    html: `<div class="screen"><span class="label">Portfolio</span><span class="word" id="w">Design</span><div class="counter"><span class="num" id="n">000</span><div class="bar"><div class="fill" id="f"></div></div></div></div><script>(function(){const n=document.getElementById('n'),f=document.getElementById('f'),w=document.getElementById('w'),words=['Design','Create','Inspire'];let c=0,wi=0,s=performance.now();setInterval(()=>{wi=(wi+1)%3;w.textContent=words[wi]},900);function tick(){const p=Math.min((performance.now()-s)/2700,1);c=Math.floor(p*100);n.textContent=String(c).padStart(3,'0');f.style.transform='scaleX('+(c/100)+')';if(p<1)requestAnimationFrame(tick)}tick()})()</script>`,
+    html: `<div class="screen"><span class="label">Portfolio</span><span class="word" id="w">Design</span><div class="counter"><span class="num" id="n">000</span><div class="bar"><div class="fill" id="f"></div></div></div></div><script>(function(){const n=document.getElementById('n'),f=document.getElementById('f'),w=document.getElementById('w'),words=['Design','Create','Inspire'];let c=0,wi=0,s=performance.now();function swapWord(){wi=(wi+1)%3;w.style.transition='all 0.4s ease-out';w.style.opacity='0';w.style.transform='translateY(-20px)';setTimeout(()=>{w.textContent=words[wi];w.style.transition='none';w.style.transform='translateY(20px)';requestAnimationFrame(()=>{w.style.transition='all 0.4s ease-out';w.style.opacity='1';w.style.transform='translateY(0)'})},400)}setInterval(swapWord,900);function tick(){const p=Math.min((performance.now()-s)/2700,1);c=Math.floor(p*100);n.textContent=String(c).padStart(3,'0');f.style.transform='scaleX('+(c/100)+')';if(p<1)requestAnimationFrame(tick)}tick()})()</script>`,
     css: `
-      body { background: #0a0a0a; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; color: white; }
+      body { margin:0; background: #0a0a0a; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; color: white; overflow:hidden; }
       .screen { position: relative; width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; }
-      .label { position: absolute; top: 24px; left: 24px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.3em; color: #666; }
-      .word { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(36px, 6vw, 64px); color: rgba(255,255,255,0.8); }
+      .label { position: absolute; top: 24px; left: 24px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.3em; color: #555; }
+      .word { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(28px, 6vw, 56px); color: rgba(255,255,255,0.8); transition: all 0.4s ease-out; }
       .counter { position: absolute; bottom: 32px; right: 32px; text-align: right; }
-      .num { font-family: 'Georgia', serif; font-size: clamp(48px, 8vw, 96px); display: block; font-variant-numeric: tabular-nums; }
-      .bar { width: 192px; height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-top: 8px; overflow: hidden; }
-      .fill { height: 100%; background: linear-gradient(90deg, #4A78B0, #254E7A); box-shadow: 0 0 8px rgba(74,120,176,0.35); transform-origin: left; transform: scaleX(0); }
+      .num { font-family: 'Georgia', serif; font-size: clamp(40px, 8vw, 80px); display: block; font-variant-numeric: tabular-nums; }
+      .bar { width: 160px; height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-top: 8px; overflow: hidden; }
+      .fill { height: 100%; background: linear-gradient(90deg, #89AACC, #4E85BF); box-shadow: 0 0 8px rgba(137,170,204,0.35); transform-origin: left; transform: scaleX(0); }
     `,
-    notes: "加载屏：数字从 000 用 requestAnimationFrame 计数到 100（2700ms），用 padStart(3,'0') 保证三位数。下方渐变进度条 scaleX 从 0→1 同步。中央单词每 900ms 轮换（Design→Create→Inspire），AnimatePresence 做过渡。左上角标签 + 右下角计数器构成对角线构图。完成后 400ms 延迟触发 onComplete。",
+    notes: "加载屏：数字从 000 用 requestAnimationFrame 计数到 100（2700ms），用 padStart(3,'0') 保证三位数。渐变进度条 scaleX 从 0→1。中央单词每 900ms 轮换——先向上滑出（y→-20 + opacity 0），然后从下方弹入（y 20→0 + opacity 1）。左上角标签 + 右下角计数器构成对角线构图。",
     tags: ["loading screen", "counter", "progress bar", "requestAnimationFrame", "preloader"],
     savedAt: "2026-07-07",
   },
@@ -1199,19 +1188,25 @@ export const inspirationItems: InspirationItem[] = [
     category: "navigation",
     sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/portfolio-cosmic-hero",
     sourceName: "Portfolio Cosmic · AndDream",
-    html: `<nav><div class="logo">AD</div><span class="sep"></span><a class="active">Home</a><a>Work</a><a>Resume</a><span class="sep"></span><button>Say hi ↗</button></nav>`,
+    html: `<nav><div class="logo"><span class="logo-ring"></span><span class="logo-inner">AD</span></div><span class="sep"></span><a class="active">Home</a><a>Work</a><a>Resume</a><span class="sep"></span><button class="say-hi"><span class="glow-ring"></span><span class="btn-text">Say hi ↗</span></button></nav>`,
     css: `
       body { background: #0a0a0a; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; }
       nav { display: inline-flex; align-items: center; gap: 2px; padding: 8px; border-radius: 999px; backdrop-filter: blur(12px); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); }
-      .logo { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Georgia', serif; font-style: italic; font-size: 13px; color: white; background: linear-gradient(90deg, #4A78B0, #254E7A); position: relative; }
+      .logo { width: 36px; height: 36px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+      .logo-ring { position: absolute; inset: 0; border-radius: 50%; background: linear-gradient(90deg, #4A78B0, #254E7A); }
+      .logo-inner { position: absolute; inset: 2px; border-radius: 50%; background: #0a0a0a; display: flex; align-items: center; justify-content: center; font-family: 'Georgia', serif; font-style: italic; font-size: 13px; color: white; transition: transform 0.2s; }
+      .logo:hover .logo-inner { transform: scale(1.1); }
       .sep { width: 1px; height: 20px; background: rgba(255,255,255,0.1); margin: 0 4px; }
-      a { font-size: 13px; padding: 6px 16px; border-radius: 999px; color: #999; cursor: pointer; transition: all 0.2s; }
+      a { font-size: 13px; padding: 6px 16px; border-radius: 999px; color: #999; cursor: pointer; transition: all 0.2s; text-decoration: none; }
       a.active { color: white; background: rgba(255,255,255,0.1); }
       a:hover:not(.active) { color: white; background: rgba(255,255,255,0.05); }
-      button { font-size: 13px; padding: 6px 16px; border-radius: 999px; color: #999; cursor: pointer; border: none; background: transparent; position: relative; transition: all 0.2s; }
-      button:hover { color: white; }
+      .say-hi { font-size: 13px; padding: 6px 16px; border-radius: 999px; color: #999; cursor: pointer; border: none; background: transparent; position: relative; transition: all 0.2s; }
+      .glow-ring { position: absolute; inset: -2px; border-radius: 999px; background: linear-gradient(90deg, #4A78B0, #254E7A); opacity: 0; transition: opacity 0.3s; }
+      .say-hi:hover .glow-ring { opacity: 1; }
+      .say-hi:hover { color: white; }
+      .btn-text { position: relative; z-index: 1; background: rgba(255,255,255,0.05); backdrop-filter: blur(12px); border-radius: 999px; padding: 6px 12px; display: inline-block; }
     `,
-    notes: "悬浮在页面顶部中央的药丸导航：backdrop-blur + 半透明白底 + 1px 白边框。Logo 用渐变圆形，导航链接 active 态有浅色背景。'Say hi' 按钮 hover 时外层出现渐变光环（absolute 伪元素 + inset -2px + 渐变背景）。滚动超过 100px 时加 shadow。",
+    notes: "悬浮在页面顶部中央的药丸导航。Logo 是渐变环（外圈靛蓝渐变 + 内圈 2px 缩进暗底形成'发光环'）hover 放大 1.1×。'Say hi' 按钮 hover 时外层出现渐变光环（absolute inset:-2px + 渐变背景 + opacity 0→1）。导航链接 active 态有浅色背景。整体 backdrop-blur + 1px 白边框。",
     tags: ["floating", "pill", "navbar", "blur", "gradient hover"],
     savedAt: "2026-07-07",
   },
