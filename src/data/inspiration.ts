@@ -767,4 +767,106 @@ export const inspirationItems: InspirationItem[] = [
     tags: ["video background", "noise texture", "cinematic", "overlay", "film grain"],
     savedAt: "2026-07-07",
   },
+
+  // ── 居中黑色药丸导航（来自 Prisma Studio）──
+  {
+    id: "centered-pill-navbar",
+    title: "Centered Black Pill Navbar",
+    category: "navigation",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/prisma-landing",
+    sourceName: "Prisma Studio · AndDream",
+    html: `<nav><a>Our story</a><a>Collective</a><a>Workshops</a><a>Programs</a><a>Inquiries</a></nav>`,
+    css: `
+      body { background: black; display: flex; align-items: center; justify-content: center; min-height: 100%; font-family: -apple-system, sans-serif; }
+      nav { background: black; border-radius: 0 0 16px 16px; padding: 8px 32px; display: flex; gap: 48px; }
+      a { color: rgba(225,224,204,0.8); font-size: 14px; font-weight: 500; cursor: pointer; transition: color 0.3s; }
+      a:hover { color: #E1E0CC; }
+    `,
+    notes: "悬挂式黑色药丸导航：绝对定位在页面顶部中央（left-1/2 -translate-x-1/2），底部圆角（rounded-b-2xl）。看起来像一个从顶部边缘'挂下来'的标签栏。5 个链接等距排列，hover 时从暗奶油色变亮。适合全屏 Hero 上方覆盖。",
+    tags: ["pill navbar", "centered", "hanging", "rounded bottom", "cream text"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 噪点纹理叠加（来自 Prisma Studio）──
+  {
+    id: "svg-noise-texture",
+    title: "SVG Noise Texture Overlay",
+    category: "animations",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/prisma-landing",
+    sourceName: "Prisma Studio · AndDream",
+    html: `<div class="base"><div class="noise"></div><h2>Noise adds film grain texture to any background, giving it a tactile, analog feel.</h2></div>`,
+    css: `
+      body { margin: 0; background: black; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; }
+      .base { position: relative; width: 100%; height: 300px; background: linear-gradient(135deg, #1a1a2e, #0a0a0a); display: flex; align-items: center; justify-content: center; padding: 40px; overflow: hidden; border-radius: 16px; }
+      .noise { position: absolute; inset: 0; mix-blend-mode: overlay; opacity: 0.5; pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-size: 128px 128px; }
+      h2 { position: relative; z-index: 1; color: #E1E0CC; font-size: 18px; font-weight: 600; text-align: center; line-height: 1.5; }
+    `,
+    notes: "纯 SVG 噪点纹理，不依赖外部图片。用 feTurbulence（fractalNoise）+ feColorMatrix 生成颗粒，mix-blend-mode: overlay 叠加到背景上。可调节 baseFrequency（粗细）、numOctaves（细节层数）、opacity（强度）。比 CSS noise 更可控，比 PNG 更轻量。",
+    tags: ["noise", "texture", "SVG", "feTurbulence", "film grain"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 卡片交错缩放入场（来自 Prisma Studio）──
+  {
+    id: "staggered-card-entrance",
+    title: "Staggered Card Scale Entrance",
+    category: "animations",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/prisma-landing",
+    sourceName: "Prisma Studio · AndDream",
+    html: `<div class="grid"><div class="card c1">01<p>Project Storyboard</p></div><div class="card c2">02<p>Smart Critiques</p></div><div class="card c3">03<p>Immersion Capsule</p></div></div><script>(function(){document.querySelectorAll('.card').forEach((c,i)=>{setTimeout(()=>c.classList.add('in'),i*250)})})()</script>`,
+    css: `
+      body { background: black; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; padding: 20px; }
+      .grid { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+      .card { background: #212121; border-radius: 16px; padding: 24px; width: 180px; color: #E1E0CC; font-size: 24px; font-weight: 700; font-family: 'Georgia', serif; opacity: 0; transform: scale(0.95); transition: all 0.7s cubic-bezier(0.22,1,0.36,1); }
+      .card.in { opacity: 1; transform: scale(1); }
+      p { font-size: 12px; font-weight: 400; color: #9CA3AF; margin-top: 8px; font-family: -apple-system, sans-serif; }
+    `,
+    notes: "卡片从 scale(0.95) + opacity:0 → scale(1) + opacity:1，每张延迟 0.15-0.25s 依次触发（useInView once + margin: -100px 提前触发）。缓动 cubic-bezier(0.22,1,0.36,1) 让缩放有'弹出来再稳住'的感觉。适合 Feature 卡片网格。",
+    tags: ["staggered", "scale", "card entrance", "cubic-bezier", "grid"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 逐词弹入 + 多风格混排（来自 Prisma Studio · About）──
+  {
+    id: "multi-style-word-pullup",
+    title: "Multi-Style Word Pull-Up",
+    category: "animations",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/prisma-landing",
+    sourceName: "Prisma Studio · AndDream",
+    html: `<div class="lines"><div class="l1"><span>I</span> <span>am</span> <span>Andrew</span> <span>Chen,</span></div><div class="l2"><span>a</span> <span>self-taught</span> <span>creative.</span></div></div><script>(function(){document.querySelectorAll('.lines span').forEach((s,i)=>{s.style.animationDelay=(i*0.08)+'s';s.classList.add('in')})})()</script>`,
+    css: `
+      body { background: #101010; display: flex; align-items: center; justify-content: center; min-height: 100%; font-family: -apple-system, sans-serif; padding: 20px; }
+      .lines { text-align: center; font-size: clamp(24px, 5vw, 48px); line-height: 1.2; }
+      .l1 span { color: #E1E0CC; font-weight: 400; }
+      .l2 span { color: #E1E0CC; font-weight: 400; font-style: italic; font-family: 'Georgia', serif; }
+      .lines span { display: inline-block; opacity: 0; transform: translateY(20px); }
+      .lines span.in { animation: up 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+      @keyframes up { to { opacity: 1; transform: translateY(0); } }
+    `,
+    notes: "同一个句子中混用多种样式（normal + italic + serif），每个词独立弹入。用 segments 数组定义每段文字及其 className。所有词统一用 0.08s 递增 delay。适合 About 区个人介绍——'我是 XXX，一个 XXX'，其中名字或关键词用斜体衬线突出。",
+    tags: ["multi-style", "word animation", "italic mix", "pull-up", "About section"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 大标题逐词弹入（来自 Prisma Studio · Hero）──
+  {
+    id: "giant-hero-word-pullup",
+    title: "Giant Hero Word Pull-Up",
+    category: "headings",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/prisma-landing",
+    sourceName: "Prisma Studio · AndDream",
+    html: `<h1><span>A</span><span>N</span><span>D</span><span>R</span><span>E</span><span>A</span><span>M</span></h1><script>(function(){document.querySelectorAll('h1 span').forEach((s,i)=>{s.style.animationDelay=(i*0.08)+'s';s.classList.add('in')})})()</script>`,
+    css: `
+      body { background: black; display: flex; align-items: center; justify-content: center; min-height: 100%; overflow: hidden; }
+      h1 { font-size: clamp(80px, 20vw, 200px); font-weight: 500; letter-spacing: -0.07em; line-height: 0.85; color: #E1E0CC; font-family: 'Georgia', serif; margin: 0; }
+      h1 span { display: inline-block; opacity: 0; transform: translateY(20px); }
+      h1 span.in { animation: pull 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+      @keyframes pull { to { opacity: 1; transform: translateY(0); } }
+    `,
+    notes: "超大字号（20vw）+ 极窄行高（0.85）+ 负字间距（-0.07em）+ 逐字弹入。用 useInView 触发 + 每个字符 0.08s 递增 delay。文字几乎占满整个视口宽度，配合视频背景 + 噪点叠加，极具视觉冲击力。适合品牌名 Hero 大标题。",
+    tags: ["giant text", "vw sizing", "letter-by-letter", "hero headline", "brand name"],
+    savedAt: "2026-07-07",
+  },
 ];
