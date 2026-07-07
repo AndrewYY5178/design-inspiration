@@ -559,4 +559,100 @@ export const inspirationItems: InspirationItem[] = [
     tags: ["toggle", "pricing", "switch", "slider", "monthly yearly"],
     savedAt: "2026-07-07",
   },
+
+  // ── 定价卡片排版（来自 Email Landing）──
+  {
+    id: "pricing-card-layout",
+    title: "Pricing Card Layout",
+    category: "cards",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/email-landing-page",
+    sourceName: "Email Landing · AndDream",
+    html: `<div class="card"><span class="tier">Standard</span><span class="price">$99.99/y</span><p class="desc">For freelancers and small teams.</p><ul><li><span class="check">✓</span>Up to 50 projects</li><li><span class="check">✓</span>Export up to 4K</li><li><span class="check">✓</span>Advanced editing toolkit</li><li><span class="check">✓</span>Team collaboration (5)</li><li><span class="check">✓</span>Premium templates</li></ul><button>Choose Plan</button></div>`,
+    css: `
+      body { background: #0c0c0c; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; padding: 20px; }
+      .card {
+        background: rgba(255,255,255,0.01); backdrop-filter: blur(4px);
+        border-radius: 16px; padding: 32px; width: 300px;
+        box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+        position: relative; overflow: hidden;
+        display: flex; flex-direction: column;
+        border: 1px solid rgba(74,120,176,0.4);
+      }
+      .card::before {
+        content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1.4px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+      }
+      .tier { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 8px; position: relative; }
+      .price { font-family: 'Georgia', serif; font-size: 36px; font-weight: 700; color: white; margin-bottom: 4px; position: relative; }
+      .desc { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 24px; position: relative; }
+      ul { list-style: none; padding: 0; margin: 0 0 24px; flex: 1; position: relative; }
+      li { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.6); padding: 4px 0; }
+      .check { width: 16px; height: 16px; border-radius: 50%; background: rgba(74,120,176,0.2); display: flex; align-items: center; justify-content: center; font-size: 10px; color: #4A78B0; font-weight: 700; flex-shrink: 0; }
+      button { width: 100%; padding: 12px; border-radius: 999px; border: none; background: #4A78B0; color: white; font-size: 14px; font-weight: 500; cursor: pointer; position: relative; transition: background 0.2s; }
+      button:hover { background: #3a6390; }
+    `,
+    notes: "定价卡片：liquid-glass 底 + 靛蓝 ring 边框（推荐计划高亮）。tier 标签（小号大写）→ 大号衬线价格 → 描述 → 功能列表（圆形 check 图标）→ 全宽 CTA 按钮。3 列 grid，中间列加 ring 突出推荐。价格字体用 Georgia/Playfair Display 等衬线体与正文形成对比。",
+    tags: ["pricing", "glass card", "ring border", "check list", "tier layout"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 用户评价卡片（来自 Email Landing）──
+  {
+    id: "testimonial-glass-card",
+    title: "Testimonial Glass Card",
+    category: "cards",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/email-landing-page",
+    sourceName: "Email Landing · AndDream",
+    html: `<figure class="card"><blockquote>"ANDREAM gave our leadership team four hours of their week back. It reads like email from the future."</blockquote><figcaption><p class="name">Parker Wilf</p><p class="role">Group Product Manager</p><p class="company">MERCURY</p></figcaption></figure>`,
+    css: `
+      body { background: #0c0c0c; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; padding: 20px; }
+      .card {
+        background: rgba(255,255,255,0.01); backdrop-filter: blur(4px);
+        border-radius: 16px; padding: 24px; width: 300px;
+        box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+        position: relative; overflow: hidden;
+      }
+      .card::before {
+        content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1.4px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+      }
+      blockquote { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.6; margin: 0; position: relative; }
+      figcaption { margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); position: relative; }
+      .name { font-size: 14px; font-weight: 600; color: white; }
+      .role { font-size: 12px; color: rgba(255,255,255,0.5); }
+      .company { font-size: 12px; font-weight: 600; color: white; letter-spacing: 0.05em; margin-top: 4px; text-transform: uppercase; }
+    `,
+    notes: "用户评价卡片：blockquote 引用 + 底部分隔线 + 姓名/职位/公司三层信息。公司名大写 + 加粗 + tracking 增加权威感。liquid-glass 背景 + 渐变边框。适合 3 列网格布局。",
+    tags: ["testimonial", "blockquote", "glass card", "social proof", "review"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 毛玻璃标签（来自 Email Landing）──
+  {
+    id: "glass-feature-chips",
+    title: "Glass Feature Chips",
+    category: "buttons",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/email-landing-page",
+    sourceName: "Email Landing · AndDream",
+    html: `<div class="chips"><span>Auto-categorize</span><span>Snooze for later</span><span>Silent newsletters</span><span>One-tap unsubscribe</span></div>`,
+    css: `
+      body { background: #0c0c0c; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; }
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+      span {
+        padding: 6px 12px; border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.03); backdrop-filter: blur(4px);
+        font-size: 12px; color: rgba(255,255,255,0.7);
+        transition: all 0.2s ease; cursor: default;
+      }
+      span:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.06); color: white; }
+    `,
+    notes: "毛玻璃功能标签：极低透明度背景 + backdrop-blur + 1px 半透明边框 + 圆角 pill。hover 时边框变亮、文字变白。适合功能列表、筛选标签、分类展示。不需要实色背景，靠 blur + border 在暗色底上营造玻璃感。",
+    tags: ["chips", "pill", "glass", "feature tags", "backdrop-blur"],
+    savedAt: "2026-07-07",
+  },
 ];
