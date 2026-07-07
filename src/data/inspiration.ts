@@ -1518,4 +1518,37 @@ export const inspirationItems: InspirationItem[] = [
     tags: ["scroll", "word reveal", "brightness", "useTransform", "progressive"],
     savedAt: "2026-07-07",
   },
+
+  // ── 纯黑白 Liquid Glass 邮箱输入框（来自 Mindloop）──
+  {
+    id: "monochrome-glass-email-input",
+    title: "Monochrome Glass Email Input",
+    category: "forms",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/mindloop-landing",
+    sourceName: "Mindloop · AndDream",
+    html: `<div class="input-wrap"><input placeholder="Enter your email" /><button>SUBSCRIBE</button></div>`,
+    css: `
+      body { background: black; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; }
+      .input-wrap {
+        display: flex; align-items: center; padding: 8px; border-radius: 999px;
+        background: rgba(255,255,255,0.01); backdrop-filter: blur(4px);
+        box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+        position: relative; overflow: hidden; width: 420px; max-width: 100%;
+      }
+      .input-wrap::before {
+        content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1.4px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+      }
+      input { flex: 1; background: transparent; border: none; outline: none; color: white; font-size: 14px; padding: 4px 16px; position: relative; }
+      input::placeholder { color: rgba(255,255,255,0.3); }
+      button { background: white; color: black; border: none; border-radius: 999px; padding: 12px 32px; font-size: 14px; font-weight: 600; cursor: pointer; position: relative; transition: transform 0.2s; }
+      button:hover { transform: scale(1.03); }
+      button:active { transform: scale(0.98); }
+    `,
+    notes: "纯黑白 newsletter 订阅框：liquid-glass pill 外壳 + 透明 input + 白色实心 SUBSCRIBE 按钮。与 Email Landing 的暗色版本不同——这个是纯黑底纯白字，按钮用全白实色而非圆形箭头。Framer Motion whileHover scale 1.03 + whileTap scale 0.98 增加反馈感。适合纯黑白设计的订阅 CTA。",
+    tags: ["monochrome", "newsletter", "subscribe", "glass", "black white"],
+    savedAt: "2026-07-07",
+  },
 ];
