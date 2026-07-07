@@ -869,4 +869,21 @@ export const inspirationItems: InspirationItem[] = [
     tags: ["giant text", "vw sizing", "letter-by-letter", "hero headline", "brand name"],
     savedAt: "2026-07-07",
   },
+
+  // ── 滚动驱动逐字渐显段落（来自 Prisma Studio · About）──
+  {
+    id: "scroll-character-reveal-v2",
+    title: "Scroll Character Reveal v2",
+    category: "animations",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/prisma-landing",
+    sourceName: "Prisma Studio · AndDream",
+    html: `<p id="r">Over the last seven years, I have worked with studios across Berlin, Paris, and Tokyo — crafting cinema, brand identities, and interactive experiences that earned international acclaim.</p><script>(function(){const p=document.getElementById('r'),t=p.textContent;p.textContent='';t.split('').forEach((c,i)=>{const s=document.createElement('span');s.textContent=c;s.style.opacity='0.2';s.style.transition='opacity 0.4s ease';p.appendChild(s)});const spans=p.querySelectorAll('span');let dir=1,i=0;function step(){if(i>=spans.length){dir=-1;setTimeout(step,600);return}if(i<0){dir=1;setTimeout(step,400);return}spans[i].style.opacity='1';i+=dir;setTimeout(step,25)}step()})()</script>`,
+    css: `
+      body { background: #101010; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; padding: 24px; }
+      p { color: #DEDBC8; font-size: clamp(13px, 2vw, 16px); line-height: 1.7; text-align: center; max-width: 600px; }
+    `,
+    notes: "Framer Motion useScroll 版本：每个字符 opacity 从 0.2 → 1，映射到段落元素的滚动进度。用 useTransform 计算：charProgress 在 [cp-0.1, cp+0.05] 区间内从 0.2 过渡到 1。offset: ['start 0.8', 'end 0.2'] 让效果在段落进入视口 80% 时开始。这里用 JS 循环模拟。适合 About 区介绍段落，比一次性淡入更有'逐字阅读'的引导感。",
+    tags: ["scroll-driven", "character opacity", "useTransform", "progressive reveal", "About"],
+    savedAt: "2026-07-07",
+  },
 ];
