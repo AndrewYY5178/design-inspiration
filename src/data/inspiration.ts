@@ -414,4 +414,149 @@ export const inspirationItems: InspirationItem[] = [
     tags: ["mobile", "drawer", "bottom sheet", "slide up", "overlay"],
     savedAt: "2026-07-06",
   },
+
+  // ── Liquid Glass 卡片（来自 Email Landing）──
+  {
+    id: "liquid-glass-card",
+    title: "Liquid Glass Card",
+    category: "cards",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/email-landing-page",
+    sourceName: "Email Landing · AndDream",
+    html: `<div class="glass-card"><h3>Priority</h3><p>4 messages · Sophia Chen, David Lim</p></div>`,
+    css: `
+      body { background: #0c0c0c; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; padding: 20px; }
+      .glass-card {
+        background: rgba(255,255,255,0.01); backdrop-filter: blur(4px);
+        border-radius: 16px; padding: 24px; width: 280px;
+        box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+        position: relative; overflow: hidden;
+      }
+      .glass-card::before {
+        content: ''; position: absolute; inset: 0; border-radius: inherit;
+        padding: 1.4px;
+        background: linear-gradient(180deg,
+          rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%,
+          rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
+          rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor; mask-composite: exclude;
+        pointer-events: none;
+      }
+      h3 { color: rgba(255,255,255,0.9); font-size: 14px; font-weight: 600; margin-bottom: 8px; position: relative; }
+      p { color: rgba(255,255,255,0.4); font-size: 12px; position: relative; }
+    `,
+    notes: "毛玻璃卡片：极低透明度背景 + backdrop-blur + 渐变边框伪元素（上亮→中透明→下亮）。mask-composite: exclude 让边框只显示在边缘，不覆盖内部。适合暗色背景上的卡片、弹窗、面板。深色底上才有'发光玻璃'质感。",
+    tags: ["glassmorphism", "backdrop-blur", "gradient border", "mask-composite", "dark theme"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 闪光渐变文字（来自 Email Landing）──
+  {
+    id: "shiny-gradient-text",
+    title: "Shiny Gradient Text",
+    category: "headings",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/email-landing-page",
+    sourceName: "Email Landing · AndDream",
+    html: `<h1>Reinvented</h1>`,
+    css: `
+      body { background: #0c0c0c; display: flex; align-items: center; justify-content: center; font-family: 'Georgia', serif; }
+      h1 {
+        font-size: 80px; font-weight: 700;
+        background-image: linear-gradient(to right,
+          #091020 0%, #0B2551 12.5%, #A4F4FD 32.5%,
+          #4A78B0 50%, #0B2551 67.5%, #091020 87.5%, #091020 100%);
+        background-size: 200% auto;
+        -webkit-background-clip: text; background-clip: text;
+        color: transparent;
+        animation: shiny 6s linear infinite;
+      }
+      @keyframes shiny {
+        0% { background-position: -200% center; }
+        100% { background-position: 200% center; }
+      }
+    `,
+    notes: "高光从左到右扫过文字的动画。原理：background-size: 200% + background-clip: text + @keyframes 移动 background-position。渐变色标：深蓝→亮青→靛蓝→深蓝，中间亮两边暗。适合 Hero 大标题，替代静态渐变的动感升级版。",
+    tags: ["shiny", "gradient text", "keyframes", "background-clip", "headline"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 全屏背景视频（来自 Email Landing）──
+  {
+    id: "fullscreen-bg-video",
+    title: "Fullscreen Background Video",
+    category: "hero",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/email-landing-page",
+    sourceName: "Email Landing · AndDream",
+    html: `<div class="video-bg"></div><div class="content"><h2>Your inbox,<br/>Reinvented</h2><p>Premium email for the AI era.</p><button>Download</button></div>`,
+    css: `
+      body { margin: 0; background: #0c0c0c; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; color: white; position: relative; overflow: hidden; }
+      .video-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #0c0c0c 100%); opacity: 0.6; }
+      /* 线上用 <video autoPlay loop muted> 替换这个 div */
+      .content { position: relative; z-index: 10; text-align: center; padding: 40px; }
+      h2 { font-size: 48px; font-weight: 700; line-height: 1.05; margin-bottom: 12px; }
+      p { color: rgba(255,255,255,0.6); font-size: 16px; margin-bottom: 24px; }
+      button { background: white; color: black; border: none; border-radius: 999px; padding: 12px 28px; font-size: 14px; font-weight: 500; cursor: pointer; }
+    `,
+    notes: "全屏固定背景视频：fixed inset-0 + z-0 + pointer-events-none + opacity 30%。视频用 CloudFront CDN 托管（.mp4，autoPlay loop muted playsInline）。上方所有内容 z-10 relative。适合 Hero 区增加电影感。视频来源：自行拍摄或用 coverr.co 等免费素材站。",
+    tags: ["video background", "fullscreen", "cinematic", "fixed position", "hero"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── Apple 风格下载按钮（来自 Email Landing）──
+  {
+    id: "apple-download-button",
+    title: "Apple-Style Download Button",
+    category: "buttons",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/email-landing-page",
+    sourceName: "Email Landing · AndDream",
+    html: `<button><svg viewBox="0 0 384 512" fill="currentColor" width="16" height="16"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9z"/></svg>Download ANDREAM<span class="chevron">›</span></button>`,
+    css: `
+      body { background: #0c0c0c; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; }
+      button {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: white; color: black; border: none;
+        border-radius: 999px; padding: 12px 20px;
+        font-size: 14px; font-weight: 500; cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      button:hover { background: rgba(255,255,255,0.9); }
+      button:active { transform: scale(0.98); }
+      .chevron { font-size: 18px; margin-left: auto; transition: transform 0.2s ease; }
+      button:hover .chevron { transform: translateX(1px); }
+    `,
+    notes: "Apple 官网风格的白底黑字圆角按钮。Apple Logo SVG + 文字 + 右箭头。hover 时箭头右移 1px，active 时整体缩放到 0.98。简洁克制，高级感来自极小的细节变化。适合产品下载 CTA。",
+    tags: ["Apple style", "pill button", "download CTA", "subtle animation", "logo SVG"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── Monthly/Yearly 切换按钮（来自 Email Landing）──
+  {
+    id: "pricing-toggle-switch",
+    title: "Pricing Toggle Switch",
+    category: "buttons",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/email-landing-page",
+    sourceName: "Email Landing · AndDream",
+    html: `<div class="toggle-row"><span class="active">Monthly</span><button id="sw"><div class="knob"></div></button><span>Yearly</span></div><script>const btn=document.getElementById('sw'),knob=btn.querySelector('.knob');let y=true;btn.onclick=()=>{y=!y;btn.classList.toggle('on',y);knob.classList.toggle('on',y);btn.previousElementSibling.classList.toggle('active',!y);btn.nextElementSibling.classList.toggle('active',y)}</script>`,
+    css: `
+      body { background: #0c0c0c; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; }
+      .toggle-row { display: flex; align-items: center; gap: 16px; color: white; }
+      .toggle-row span { font-size: 14px; color: rgba(255,255,255,0.4); transition: color 0.3s; }
+      .toggle-row span.active { color: white; }
+      button {
+        width: 48px; height: 24px; border-radius: 12px; border: none;
+        background: #4A78B0; cursor: pointer; position: relative;
+        transition: background 0.3s;
+      }
+      button:not(.on) { background: rgba(255,255,255,0.2); }
+      .knob {
+        width: 20px; height: 20px; background: white; border-radius: 50%;
+        position: absolute; top: 2px; left: 2px;
+        transition: transform 0.3s cubic-bezier(0.25,0.1,0.25,1);
+      }
+      .knob.on { transform: translateX(24px); }
+    `,
+    notes: "Monthly / Yearly 切换滑块。白色圆点 + 靛蓝背景（选中态）→ 灰色（未选中）。圆点 translateX 24px 平滑滑动，文字颜色同步切换。适合定价页。关键是 active 态使用品牌色，非 active 态使用低透明度白色。",
+    tags: ["toggle", "pricing", "switch", "slider", "monthly yearly"],
+    savedAt: "2026-07-07",
+  },
 ];
