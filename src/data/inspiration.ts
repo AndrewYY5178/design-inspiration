@@ -655,4 +655,59 @@ export const inspirationItems: InspirationItem[] = [
     tags: ["chips", "pill", "glass", "feature tags", "backdrop-blur"],
     savedAt: "2026-07-07",
   },
+
+  // ── Pill 按钮（来自 USD Halo）──
+  {
+    id: "pill-button-arrow-circle",
+    title: "Pill Button with Arrow Circle",
+    category: "buttons",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/halo-usd-landing",
+    sourceName: "USD Halo · AndDream",
+    html: `<button>Join us<span class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></button>`,
+    css: `
+      body { background: #F5F5F5; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; }
+      button {
+        display: inline-flex; align-items: center; gap: 12px;
+        background: black; color: white; border: none;
+        border-radius: 999px; padding: 8px 8px 8px 32px;
+        font-size: 16px; font-weight: 500; cursor: pointer;
+        transition: background 0.2s;
+      }
+      button:hover { background: #333; }
+      .arrow {
+        width: 36px; height: 36px; background: white; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        color: black;
+      }
+    `,
+    notes: "极简 Pill 按钮：纯黑背景 + 白色文字 + 尾部白色圆形箭头。左文字右圆圈的经典组合，对比强烈。padding 不对称（左 32px 右 8px）让圆形完整露出。hover 时整体变灰。适合 Hero CTA 或主要行动按钮。",
+    tags: ["pill button", "arrow circle", "black white", "CTA", "minimal"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 品牌横滚文字（来自 USD Halo）──
+  {
+    id: "typographic-marquee",
+    title: "Typographic Brand Marquee",
+    category: "animations",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/halo-usd-landing",
+    sourceName: "USD Halo · AndDream",
+    html: `<div class="track"><span class="s1">Stripe</span><span class="s2">COINBASE</span><span class="s3">Uniswap</span><span class="s4">AAVE</span><span class="s5">Compound</span><span class="s6">MAKERDAO</span><span class="s7">Chainlink</span><span class="s1">Stripe</span><span class="s2">COINBASE</span><span class="s3">Uniswap</span><span class="s4">AAVE</span></div>`,
+    css: `
+      body { background: #F5F5F5; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; overflow: hidden; }
+      @keyframes mq { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+      .track { display: flex; width: max-content; animation: mq 22s linear infinite; }
+      .track span { margin: 0 28px; white-space: nowrap; color: rgba(0,0,0,0.6); flex-shrink: 0; }
+      .s1 { font-family: Georgia, serif; font-weight: 700; letter-spacing: -0.02em; font-size: 15px; }
+      .s2 { font-family: Arial, sans-serif; font-weight: 900; letter-spacing: 0.08em; font-size: 13px; text-transform: uppercase; }
+      .s3 { font-family: Trebuchet MS, sans-serif; font-weight: 600; letter-spacing: 0.01em; font-size: 15px; font-style: italic; }
+      .s4 { font-family: Courier New, monospace; font-weight: 700; letter-spacing: 0.12em; font-size: 13px; text-transform: uppercase; }
+      .s5 { font-family: Palatino, serif; font-weight: 400; letter-spacing: -0.01em; font-size: 16px; }
+      .s6 { font-family: Impact, sans-serif; font-weight: 400; letter-spacing: 0.04em; font-size: 14px; }
+      .s7 { font-family: Verdana, sans-serif; font-weight: 700; letter-spacing: -0.03em; font-size: 13px; }
+    `,
+    notes: "品牌横滚：每个品牌用不同字体（Georgia / Arial / Courier / Impact / Verdana…），字重、字间距、大小、大小写各不相同。通过差异化 typography 让横滚看起来像'杂志排版'。duplicate 列表实现无缝循环。22s 循环速度。",
+    tags: ["marquee", "typography", "brand", "font mix", "horizontal scroll"],
+    savedAt: "2026-07-07",
+  },
 ];
