@@ -3,8 +3,41 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Sparkles, Search, X, Plus, Maximize2 } from 'lucide-react';
 import { inspirationItems, CATEGORIES, type Category, type InspirationItem } from './data/inspiration';
 
+/* ── Fullscreen Modal ── */
+function FullscreenModal({ item, onClose }: { item: InspirationItem; onClose: () => void }) {
+  const srcDoc = `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{height:100%}
+    body{display:flex;align-items:center;justify-content:center;background:transparent;font-family:-apple-system,sans-serif}
+    ${item.css}
+  </style></head><body>${item.html}</body></html>`;
+
+  return (
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+      onClick={onClose}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 lg:p-16 bg-black/80 backdrop-blur-md">
+      {/* Close button */}
+      <button onClick={onClose} className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors">
+        <X className="w-5 h-5" strokeWidth={1.5} />
+      </button>
+      {/* Info bar */}
+      <div className="absolute top-4 left-4 z-10 flex items-center gap-3">
+        <span className="text-white/60 text-sm">{item.title}</span>
+        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold tracking-[0.04em]"
+          style={{ background: 'rgba(37,78,122,0.3)', color: '#4A78B0' }}>{item.category}</span>
+      </div>
+      {/* iframe */}
+      <motion.div initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 0.9 }} transition={{ duration: 0.3, ease: [0.22,1,0.36,1] }}
+        onClick={(e) => e.stopPropagation()}
+        className="w-full max-w-5xl aspect-[16/10] bg-transparent rounded-2xl overflow-hidden">
+        <iframe srcDoc={srcDoc} className="w-full h-full border-0" sandbox="allow-scripts" title={item.title} />
+      </motion.div>
+    </motion.div>
+  );
+}
+
 /* ── Live Preview iframe ── */
-function LivePreview({ item }: { item: InspirationItem }) {
+function LivePreview({ item, onExpand }: { item: InspirationItem; onExpand: () => void }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
 
@@ -41,16 +74,15 @@ function LivePreview({ item }: { item: InspirationItem }) {
           scrolling="no"
         />
       </div>
-      {/* Click to view full page */}
-      <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer"
-        onClick={(e) => e.stopPropagation()}
-        className="absolute top-2 right-2 z-10 cursor-pointer"
-        title="Open full page">
-        <div className="bg-black/60 hover:bg-black/80 text-white text-[10px] px-2 py-0.5 rounded-full flex items-center gap-1 transition-all opacity-0 group-hover/preview:opacity-100">
+      {/* Expand button */}
+      <button onClick={(e) => { e.stopPropagation(); onExpand(); }}
+        className="absolute top-2 right-2 z-10 cursor-pointer opacity-0 group-hover/preview:opacity-100 transition-opacity"
+        title="Expand preview">
+        <div className="bg-black/60 hover:bg-black/80 text-white text-[10px] px-2 py-0.5 rounded-full flex items-center gap-1 transition-all">
           <Maximize2 className="w-3 h-3" strokeWidth={1.5} />
-          Full page ↗
+          Expand
         </div>
-      </a>
+      </button>
     </div>
   );
 }
@@ -59,6 +91,7 @@ function LivePreview({ item }: { item: InspirationItem }) {
 export default function App() {
   const [activeCategory, setActiveCategory] = useState<Category | 'all'>('all');
   const [search, setSearch] = useState('');
+  const [fullscreenItem, setFullscreenItem] = useState<InspirationItem | null>(null);
 
   const filtered = inspirationItems.filter((item) => {
     const matchCat = activeCategory === 'all' || item.category === activeCategory;
@@ -164,7 +197,7 @@ export default function App() {
                       onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'; e.currentTarget.style.boxShadow = '0 2px 12px rgba(0,0,0,0.06)'; }}>
 
                       {/* Live Preview */}
-                      <LivePreview item={item} />
+                      <LivePreview item={item} onExpand={() => setFullscreenItem(item)} />
 
                       <div className="p-5">
                         {/* Title + link */}
@@ -211,6 +244,13 @@ export default function App() {
           )}
         </div>
       </main>
+
+      {/* Fullscreen modal */}
+      <AnimatePresence>
+        {fullscreenItem && (
+          <FullscreenModal item={fullscreenItem} onClose={() => setFullscreenItem(null)} />
+        )}
+      </AnimatePresence>
 
       {/* ── Footer ── */}
       <footer className="border-t border-black/5 bg-[#FAFAF8] text-center py-8 text-sm text-[#3A3A3A]">
