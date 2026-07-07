@@ -1171,12 +1171,12 @@ export const inspirationItems: InspirationItem[] = [
     category: "animations",
     sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/portfolio-cosmic-hero",
     sourceName: "Portfolio Cosmic · AndDream",
-    html: `<span id="cw">Design</span><script>(function(){const w=document.getElementById('cw'),words=['Design','Create','Inspire'];let i=0;setInterval(()=>{i=(i+1)%3;w.style.opacity='0';w.style.transform='translateY(8px)';setTimeout(()=>{w.textContent=words[i];w.style.opacity='1';w.style.transform='translateY(0)'},200)},900)})()</script>`,
+    html: `<span id="cw">Design</span><script>(function(){const w=document.getElementById('cw'),words=['Design','Create','Inspire'];let i=0;function swap(){i=(i+1)%3;w.style.transition='all 0.4s ease-out';w.style.opacity='0';w.style.transform='translateY(-20px)';setTimeout(()=>{w.textContent=words[i];w.style.transition='none';w.style.transform='translateY(20px)';requestAnimationFrame(()=>{w.style.transition='all 0.4s ease-out';w.style.opacity='1';w.style.transform='translateY(0)'})},400)}setInterval(swap,900)})()</script>`,
     css: `
       body { background: #0a0a0a; display: flex; align-items: center; justify-content: center; font-family: 'Georgia', serif; font-style: italic; min-height: 100%; }
-      span { font-size: clamp(36px, 6vw, 64px); color: rgba(255,255,255,0.8); transition: all 0.4s ease-out; }
+      span { font-size: clamp(32px, 6vw, 56px); color: rgba(255,255,255,0.8); }
     `,
-    notes: "单词每 900ms 轮换一次：先淡出 + 下移 → 替换文字 → 淡入 + 回位。用 AnimatePresence mode='wait' 确保上一个完全消失后下一个才出现。适合加载屏或 Hero 的'我是一名 ___'职位的动态展示。",
+    notes: "单词每 900ms 轮换：先向上滑出（y→-20px + opacity 0）→ 替换文字 → 从下方弹入（y 20px→0 + opacity 1）。模拟 Framer Motion AnimatePresence mode='wait' 的效果。适合加载屏或 Hero 的职位/标签动态展示。",
     tags: ["cycling", "word swap", "AnimatePresence", "role display", "loading"],
     savedAt: "2026-07-07",
   },
