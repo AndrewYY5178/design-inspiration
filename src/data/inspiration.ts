@@ -1233,4 +1233,68 @@ export const inspirationItems: InspirationItem[] = [
     tags: ["rotating", "role", "italic", "sentence", "identity"],
     savedAt: "2026-07-07",
   },
+
+  // ── 渐变边框悬停按钮（来自 Portfolio Cosmic）──
+  {
+    id: "gradient-border-hover-button",
+    title: "Gradient Border Hover Button",
+    category: "buttons",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/portfolio-cosmic-hero",
+    sourceName: "Portfolio Cosmic · AndDream",
+    html: `<div class="row"><button class="solid">See Works</button><button class="outline">Reach out...</button></div>`,
+    css: `
+      body { background: #0a0a0a; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; }
+      .row { display: flex; gap: 16px; }
+      button { border-radius: 999px; padding: 14px 28px; font-size: 14px; cursor: pointer; transition: all 0.3s; }
+      .solid { background: white; color: black; border: none; }
+      .solid:hover { background: #0a0a0a; color: white; box-shadow: 0 0 0 2px transparent; border: 2px solid #4A78B0; }
+      .outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.1); position: relative; }
+      .outline:hover { border-color: transparent; }
+      .outline::after { content: ''; position: absolute; inset: -2px; border-radius: 999px; opacity: 0; transition: opacity 0.3s; background: linear-gradient(90deg, #4A78B0, #254E7A); z-index: -1; }
+      .outline:hover::after { opacity: 1; }
+    `,
+    notes: "两组按钮：Solid（白底黑字 → hover 黑底白字 + 靛蓝边框）和 Outline（透明底白字 → hover 渐变边框光环）。Outline 的渐变边框用 ::after 伪元素 + absolute inset -2px + 渐变背景实现'发光环'效果。两个按钮都 hover:scale-105 微放大。适合 Hero CTA 组合。",
+    tags: ["gradient border", "hover glow", "CTA pair", "outline", "scale"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── Scroll 指示器动态竖条（来自 Portfolio Cosmic）──
+  {
+    id: "scroll-indicator-bar",
+    title: "Scroll Indicator with Animated Bar",
+    category: "animations",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/portfolio-cosmic-hero",
+    sourceName: "Portfolio Cosmic · AndDream",
+    html: `<div class="indicator"><span>SCROLL</span><div class="line"><div class="glow"></div></div></div>`,
+    css: `
+      body { background: #0a0a0a; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; }
+      .indicator { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+      span { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: #666; }
+      .line { width: 1px; height: 40px; background: rgba(255,255,255,0.1); position: relative; overflow: hidden; }
+      .glow { width: 100%; height: 35%; position: absolute; top: 0; animation: scroll 1.5s ease-in-out infinite; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.3), transparent); }
+      @keyframes scroll { 0% { transform: translateY(-100%); } 100% { transform: translateY(300%); } }
+    `,
+    notes: "Hero 底部的滚动提示：'SCROLL' 标签 + 1px 竖线 + 内部高光条从上往下循环移动。高光用 translateY(-100%→300%) 动画 + 渐变（透明→白→透明），制造'还有内容在下面'的暗示。适合全屏 Hero 引导用户向下滚动。",
+    tags: ["scroll indicator", "animated bar", "hero", "vertical line", "call to action"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── HLS 视频背景（来自 Portfolio Cosmic）──
+  {
+    id: "hls-video-background",
+    title: "HLS Streaming Video Background",
+    category: "hero",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/portfolio-cosmic-hero",
+    sourceName: "Portfolio Cosmic · AndDream",
+    html: `<div class="player"><div class="bar"></div><p>HLS: adaptive bitrate streaming</p></div><script>(function(){const bar=document.querySelector('.bar');let q=100;function sim(){q=q+(Math.random()>0.5?1:-1)*Math.random()*15;q=Math.max(20,Math.min(100,q));bar.style.width=q+'%';bar.style.background=q>70?'#4A78B0':q>40?'#89AACC':'#666';setTimeout(sim,800)}sim()})()</script>`,
+    css: `
+      body { background: #0a0a0a; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; font-family: -apple-system, sans-serif; min-height: 100%; }
+      .player { width: 300px; height: 180px; background: #111; border-radius: 16px; display: flex; align-items: flex-end; padding: 12px; }
+      p { color: rgba(255,255,255,0.5); font-size: 12px; position: relative; z-index: 1; }
+      .bar { height: 3px; background: #4A78B0; border-radius: 2px; position: absolute; bottom: 0; left: 0; transition: all 0.8s; }
+    `,
+    notes: "HLS（HTTP Live Streaming）比 MP4 更适合 Hero 背景视频：自适应码率（根据网速自动切换 720p/1080p/4K）、秒开无需完整下载、支持直播。托管方案：Mux.com（模板用的这个，免费额度够用）、Cloudflare Stream、或者直接用 Vimeo 的直链。实现上用 hls.js 库，Hls.isSupported() 检测 → new Hls() 加载 .m3u8 播放列表。",
+    tags: ["HLS", "video streaming", "adaptive bitrate", "mux", "background"],
+    savedAt: "2026-07-07",
+  },
 ];
