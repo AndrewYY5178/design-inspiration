@@ -1241,14 +1241,12 @@ export const inspirationItems: InspirationItem[] = [
       body { background: #0a0a0a; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; }
       .row { display: flex; gap: 16px; }
       button { border-radius: 999px; padding: 14px 28px; font-size: 14px; cursor: pointer; transition: all 0.3s; }
-      .solid { background: white; color: black; border: none; }
-      .solid:hover { background: #0a0a0a; color: white; box-shadow: 0 0 0 2px transparent; border: 2px solid #4A78B0; }
-      .outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.1); position: relative; }
-      .outline:hover { border-color: transparent; }
-      .outline::after { content: ''; position: absolute; inset: -2px; border-radius: 999px; opacity: 0; transition: opacity 0.3s; background: linear-gradient(90deg, #4A78B0, #254E7A); z-index: -1; }
-      .outline:hover::after { opacity: 1; }
+      .solid { background: white; color: black; border: 2px solid white; }
+      .solid:hover { background: #0a0a0a; color: white; border-color: #4A78B0; transform: scale(1.05); }
+      .outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.15); }
+      .outline:hover { border-color: #4A78B0; transform: scale(1.05); }
     `,
-    notes: "两组按钮：Solid（白底黑字 → hover 黑底白字 + 靛蓝边框）和 Outline（透明底白字 → hover 渐变边框光环）。Outline 的渐变边框用 ::after 伪元素 + absolute inset -2px + 渐变背景实现'发光环'效果。两个按钮都 hover:scale-105 微放大。适合 Hero CTA 组合。",
+    notes: "两组 CTA 按钮并排：Solid（白底黑字 → hover 反转为黑底白字 + 靛蓝边框）和 Outline（透明底 + 半透明白边框 → hover 靛蓝边框）。两个都 hover:scale-105 微放大。简洁克制——不需要渐变光环，靠颜色反转和边框变色就足够表达交互。",
     tags: ["gradient border", "hover glow", "CTA pair", "outline", "scale"],
     savedAt: "2026-07-07",
   },
