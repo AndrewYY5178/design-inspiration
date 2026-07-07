@@ -1432,4 +1432,90 @@ export const inspirationItems: InspirationItem[] = [
     tags: ["NFT", "video card", "score badge", "nested glass", "collection"],
     savedAt: "2026-07-07",
   },
+
+  // ── 同心圆 Logo 导航（来自 Mindloop）──
+  {
+    id: "concentric-circles-logo-nav",
+    title: "Concentric Circles Logo Nav",
+    category: "navigation",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/mindloop-landing",
+    sourceName: "Mindloop · AndDream",
+    html: `<nav><div class="logo"><span class="outer"></span><span class="inner"></span>ANDREAM</div><div class="links"><span>Home</span><span>•</span><span>How It Works</span><span>•</span><span>Philosophy</span><span>•</span><span>Use Cases</span></div><div class="icons"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></nav>`,
+    css: `
+      body { background: black; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; }
+      nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; width: 100%; max-width: 800px; }
+      .logo { display: flex; align-items: center; gap: 8px; color: white; font-weight: 700; font-size: 16px; }
+      .outer { width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.6); display: inline-block; position: relative; }
+      .inner { width: 12px; height: 12px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.6); position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+      .links { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,0.65); }
+      .links span:nth-child(odd) { cursor: pointer; }
+      .links span:nth-child(odd):hover { color: white; }
+      .links span:nth-child(even) { color: rgba(255,255,255,0.2); font-size: 10px; }
+      .icons { display: flex; gap: 8px; }
+      .dot { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.01); backdrop-filter: blur(4px); box-shadow: inset 0 1px 1px rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; }
+      .dot:hover { background: rgba(255,255,255,0.05); }
+      .dot::after { content: ''; width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.5); }
+    `,
+    notes: "纯黑白导航栏：同心圆 Logo（外圈 28px + 内圈 12px 叠在中心）+ • 分隔的导航链接 + 3 个 liquid-glass 圆形社交图标按钮。链接 hover 从 65%→100% 白色，• 分隔符 20% 白色。整体透明底 + 固定顶部。极简单色克制。",
+    tags: ["concentric", "logo", "dot separator", "monochrome", "navbar"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 平台图标卡片（来自 Mindloop）──
+  {
+    id: "platform-icon-cards",
+    title: "Platform Icon Cards",
+    category: "cards",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/mindloop-landing",
+    sourceName: "Mindloop · AndDream",
+    html: `<div class="grid"><div class="card"><div class="icon">1</div><h3>ChatGPT</h3><p>Conversational AI that answers questions, writes code, and generates ideas in real time.</p></div><div class="card"><div class="icon">2</div><h3>Perplexity</h3><p>AI-powered search engine that provides cited, accurate answers to complex questions.</p></div><div class="card"><div class="icon">3</div><h3>Google AI</h3><p>Search reimagined with generative AI overviews and multimodal understanding.</p></div></div>`,
+    css: `
+      body { background: black; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; padding: 20px; min-height: 100%; }
+      .grid { display: flex; gap: 32px; flex-wrap: wrap; justify-content: center; }
+      .card { text-align: center; max-width: 200px; }
+      .icon { width: 200px; height: 200px; border-radius: 16px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; font-size: 60px; font-weight: 700; color: rgba(255,255,255,0.2); margin-bottom: 24px; }
+      h3 { font-size: 16px; font-weight: 600; color: white; margin-bottom: 8px; }
+      p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+    `,
+    notes: "3 列平台卡片：200×200 图标占位区（白底 5% + 大号数字）+ 粗体标题 + 描述。每个卡片用 fadeUp 依次淡入（delay 递增 0.1s）。纯黑白配色，图标区用极低透明度占位。适合展示工具/平台/合作伙伴。",
+    tags: ["icon card", "platform", "monochrome", "fade up", "grid"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── fadeUp 动画模式（来自 Mindloop）──
+  {
+    id: "fadeup-animation-pattern",
+    title: "FadeUp Animation Pattern",
+    category: "animations",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/mindloop-landing",
+    sourceName: "Mindloop · AndDream",
+    html: `<div class="items"><div class="item i1">Section Title</div><div class="item i2">Subtitle text below</div><div class="item i3">Card content here</div></div><script>(function(){document.querySelectorAll('.item').forEach((el,i)=>{setTimeout(()=>el.classList.add('show'),i*250)})})()</script>`,
+    css: `
+      body { background: black; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; padding: 20px; }
+      .items { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+      .item { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; color: white; font-size: 18px; }
+      .item.show { opacity: 1; transform: translateY(0); }
+    `,
+    notes: "Framer Motion 的 fadeUp 可复用模式：whileInView 触发（once:true, margin:-100px 提前 100px 触发），opacity 0→1 + y 20→0，duration 0.6s + easeOut。每个组件用 delay 参数做 stagger（delay = index * 0.1）。适合所有需要'滚到才出现'的 Section。全站统一动画语言。",
+    tags: ["fade up", "whileInView", "stagger", "reusable pattern", "scroll trigger"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 滚动驱动词亮度（来自 Mindloop · Mission）──
+  {
+    id: "scroll-word-brightness",
+    title: "Scroll Word Brightness Reveal",
+    category: "animations",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/mindloop-landing",
+    sourceName: "Mindloop · AndDream",
+    html: `<p id="rp">We're building a space where curiosity meets clarity — where readers find depth, writers find reach, and every newsletter becomes a conversation worth having.</p><script>(function(){const p=document.getElementById('rp'),t=p.textContent;const words=t.split(' ');p.textContent='';words.forEach(w=>{const s=document.createElement('span');s.textContent=w+' ';s.style.opacity='0.15';s.style.transition='opacity 0.4s ease';p.appendChild(s)});const spans=p.querySelectorAll('span');let i=0,dir=1;function step(){if(i>=spans.length){dir=-1;setTimeout(step,500);return}if(i<0){dir=1;setTimeout(step,300);return}spans[i].style.opacity='1';i+=dir;setTimeout(step,80)}step()})()</script>`,
+    css: `
+      body { background: black; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; padding: 24px; color: white; }
+      p { font-size: clamp(18px, 3vw, 28px); font-weight: 500; line-height: 1.5; max-width: 700px; text-align: center; }
+      p span { opacity: 0.15; }
+    `,
+    notes: "滚动驱动词亮度：每个词初始 opacity 0.15，随 useScroll + useTransform 映射到滚动进度。词在 [start, end] 区间内 opacity 0.15→1。具体：start = index/total, end = (index+3)/total（3 个词的过渡窗口）。关键词（curiosity/clarity/depth 等）额外用斜体衬线突出。适合 Mission/About 大段文字。",
+    tags: ["scroll", "word reveal", "brightness", "useTransform", "progressive"],
+    savedAt: "2026-07-07",
+  },
 ];
