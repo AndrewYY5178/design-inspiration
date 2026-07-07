@@ -1044,4 +1044,111 @@ export const inspirationItems: InspirationItem[] = [
     tags: ["glass", "icon button", "circle", "social", "blur"],
     savedAt: "2026-07-07",
   },
+
+  // ── 彩色故障纹理（来自 Orbis NFT）──
+  {
+    id: "color-noise-texture",
+    title: "Color Noise Texture Overlay",
+    category: "animations",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/orbis-nft-landing",
+    sourceName: "Orbis NFT · AndDream",
+    html: `<div class="scene"><div class="texture"></div><h2>Space Objects</h2></div>`,
+    css: `
+      body { margin: 0; background: #010828; font-family: -apple-system, sans-serif; }
+      .scene { position: relative; width: 100%; height: 300px; background: radial-gradient(ellipse at center, #0a1a3a, #010828); display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 16px; }
+      .texture { position: absolute; inset: 0; mix-blend-mode: lighten; opacity: 0.5; pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-size: 256px 256px; }
+      h2 { position: relative; z-index: 1; color: #EFF4FF; font-size: 32px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.04em; }
+    `,
+    notes: "SVG 噪点 + feColorMatrix 注入颜色通道 + mix-blend-mode: lighten。比单纯噪点多一层色彩偏移，产生类似 VHS 故障/星云纹理的效果。覆盖在视频或渐变背景上，增加科幻感。关键参数：baseFrequency 0.65（比标准噪点更细腻）+ matrix alpha 0.5。",
+    tags: ["noise", "color matrix", "glitch", "texture", "scifi"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 厚玻璃药丸导航（来自 Orbis NFT）──
+  {
+    id: "thick-glass-pill-nav",
+    title: "Thick Glass Pill Navigation",
+    category: "navigation",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/orbis-nft-landing",
+    sourceName: "Orbis NFT · AndDream",
+    html: `<nav><a>Homepage</a><a>Gallery</a><a>Buy NFT</a><a>FAQ</a><a>Contact</a></nav>`,
+    css: `
+      body { background: #010828; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; }
+      nav {
+        display: flex; gap: 40px; padding: 24px 52px; border-radius: 28px;
+        background: rgba(255,255,255,0.01); backdrop-filter: blur(4px);
+        box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+        position: relative; overflow: hidden;
+      }
+      nav::before {
+        content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1.4px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+      }
+      a { color: rgba(255,255,255,0.8); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; position: relative; transition: color 0.2s; }
+      a:hover { color: #6FFF00; }
+    `,
+    notes: "超厚 liquid-glass 药丸导航：rounded-[28px] + px-[52px] py-[24px]。比标准 pill 更厚更圆，视觉权重更大。5 个链接等距排列，hover 变霓虹绿。适合深色空间主题的居中导航。字体用 Anton / 粗体无衬线等宽字效果最好。",
+    tags: ["glass", "thick pill", "navigation", "rounded", "scifi"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 等宽字体正文（来自 Orbis NFT）──
+  {
+    id: "monospace-body-text",
+    title: "Monospace Uppercase Body",
+    category: "other",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/orbis-nft-landing",
+    sourceName: "Orbis NFT · AndDream",
+    html: `<p>A digital object fixed beyond time and place. An exploration of distance, form, and silence in space.</p>`,
+    css: `
+      body { background: #010828; display: flex; align-items: center; justify-content: center; font-family: 'Courier New', monospace; min-height: 100%; padding: 24px; }
+      p { font-family: 'Courier New', monospace; font-size: 14px; text-transform: uppercase; color: #EFF4FF; max-width: 266px; line-height: 1.6; letter-spacing: 0.02em; }
+    `,
+    notes: "等宽字体（Courier New / monospace）+ 全大写 + 窄宽度（max-w-[266px]）营造'电报/代码美学'。字间距 0.02em 让每个字母呼吸。适合 NFT/Web3/科技类页面的介绍段落——比常规正文更有'数据终端'质感。",
+    tags: ["monospace", "uppercase", "code aesthetic", "narrow", "tech"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 草书叠字（来自 Orbis NFT）──
+  {
+    id: "cursive-overlay-text",
+    title: "Cursive Overlay Accent",
+    category: "headings",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/orbis-nft-landing",
+    sourceName: "Orbis NFT · AndDream",
+    html: `<div class="wrap"><h2>Hello!<br/>I'm orbis</h2><span class="cursive">Orbis</span></div>`,
+    css: `
+      body { background: #010828; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; padding: 24px; }
+      .wrap { position: relative; display: inline-block; }
+      h2 { font-size: clamp(32px, 6vw, 60px); font-weight: 900; text-transform: uppercase; color: white; line-height: 1; margin: 0; letter-spacing: 0.02em; }
+      .cursive { font-family: 'Brush Script MT', 'Snell Roundhand', cursive; font-size: clamp(36px, 7vw, 68px); color: #6FFF00; position: absolute; bottom: -10px; right: -20px; transform: rotate(-2deg); mix-blend-mode: exclusion; opacity: 0.9; pointer-events: none; }
+    `,
+    notes: "草书叠字：Condiment 等手写体用 absolute 定位在标题右下角，mix-blend-mode: exclusion 让颜色随底层内容变化，-rotate-2 微倾斜增加手写感。霓虹绿（#6FFF00）在深蓝底上有强烈对比。适合 Hero 标题的装饰性签名/标签。",
+    tags: ["cursive", "overlay", "exclusion", "handwriting", "neon green"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 混排标题（来自 Orbis NFT · Collection）──
+  {
+    id: "mixed-font-collection-heading",
+    title: "Mixed Font Collection Heading",
+    category: "headings",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/orbis-nft-landing",
+    sourceName: "Orbis NFT · AndDream",
+    html: `<h2>Collection of<br/><span class="indent"><em class="c">Space</em> <span class="a">objects</span></span></h2>`,
+    css: `
+      body { background: #010828; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; padding: 24px; }
+      h2 { font-size: clamp(32px, 6vw, 60px); font-weight: 900; text-transform: uppercase; color: white; line-height: 1.1; letter-spacing: 0.02em; }
+      .indent { display: block; padding-left: 64px; margin-top: 4px; }
+      .c { font-family: 'Brush Script MT', cursive; font-style: normal; color: #6FFF00; text-transform: none; margin-right: 12px; font-weight: 400; }
+      .a { font-weight: 900; color: white; }
+    `,
+    notes: "标题中混用三种样式：粗体无衬线（'Collection of'）+ 草书霓虹绿（'Space'）+ 粗体无衬线（'objects'）。第二行缩进 ml-24 制造层次。草书关键词打破全大写无衬线的'硬'感，加入一抹手写柔度。适合 Section 标题——用草书突出一个关键词。",
+    tags: ["mixed fonts", "cursive accent", "indented", "section heading", "contrast"],
+    savedAt: "2026-07-07",
+  },
 ];
