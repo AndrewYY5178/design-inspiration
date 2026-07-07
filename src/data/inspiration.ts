@@ -710,4 +710,61 @@ export const inspirationItems: InspirationItem[] = [
     tags: ["marquee", "typography", "brand", "font mix", "horizontal scroll"],
     savedAt: "2026-07-07",
   },
+
+  // ── 逐词弹入动画（来自 Prisma Studio）──
+  {
+    id: "word-pullup-animation",
+    title: "Word Pull-Up Animation",
+    category: "animations",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/prisma-landing",
+    sourceName: "Prisma Studio · AndDream",
+    html: `<div class="lines"><div class="l1"><span>S</span><span>t</span><span>u</span><span>d</span><span>i</span><span>o</span><span>-</span><span>g</span><span>r</span><span>a</span><span>d</span><span>e</span></div><div class="l2"><span>w</span><span>o</span><span>r</span><span>k</span><span>f</span><span>l</span><span>o</span><span>w</span><span>s</span></div><div class="l3"><span>f</span><span>o</span><span>r</span></div><div class="l4"><span>v</span><span>i</span><span>s</span><span>i</span><span>o</span><span>n</span><span>a</span><span>r</span><span>y</span></div></div><script>(function(){document.querySelectorAll('.lines span').forEach((s,i)=>{s.style.animationDelay=(i*0.08)+'s';s.classList.add('in')})})()</script>`,
+    css: `
+      body { background: black; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; padding: 20px; }
+      .lines { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 10px; max-width: 600px; text-align: center; }
+      .lines div { display: flex; flex-wrap: wrap; justify-content: center; }
+      .l1 span, .l3 span, .l4 span { color: #E1E0CC; font-size: clamp(24px, 4vw, 36px); font-weight: 600; }
+      .l2 span { color: #6B7280; font-size: clamp(24px, 4vw, 36px); font-weight: 600; }
+      .lines span { display: inline-block; opacity: 0; transform: translateY(20px); }
+      .lines span.in { animation: pull 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+      @keyframes pull { to { opacity: 1; transform: translateY(0); } }
+    `,
+    notes: "逐词从下方弹入（y:20 → 0）+ 透明度渐显。每个词 delay 递增 0.08s，形成涟漪效果。用 cubic-bezier(0.16,1,0.3,1) 让弹入有'减速停稳'的感觉。多段文字可混排样式（cream 正文 + gray 副文）。适合 Hero 标题或 Section 引言。",
+    tags: ["stagger", "pull-up", "word animation", "cubic-bezier", "headline"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 电影感视频 Hero（来自 Prisma Studio）──
+  {
+    id: "cinematic-video-hero",
+    title: "Cinematic Video Hero with Noise",
+    category: "hero",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/prisma-landing",
+    sourceName: "Prisma Studio · AndDream",
+    html: `<div class="hero"><div class="noise"></div><div class="gradient"></div><div class="content"><h1>ANDREAM</h1><p>A worldwide network of visual artists.</p></div></div>`,
+    css: `
+      body { margin: 0; background: black; font-family: -apple-system, sans-serif; }
+      .hero {
+        position: relative; width: 100%; height: 100vh; border-radius: 16px; overflow: hidden;
+        background: linear-gradient(135deg, #1a1a2e, #0c0c0c, #1a1020);
+      }
+      .noise {
+        position: absolute; inset: 0; mix-blend-mode: overlay; opacity: 0.7; pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-size: 128px 128px;
+      }
+      .gradient {
+        position: absolute; inset: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent 40%, rgba(0,0,0,0.6));
+      }
+      .content {
+        position: absolute; bottom: 40px; left: 40px; z-index: 10;
+      }
+      h1 { color: #E1E0CC; font-size: clamp(60px, 20vw, 200px); font-weight: 500; line-height: 0.85; letter-spacing: -0.07em; margin: 0 0 12px; font-family: 'Georgia', serif; }
+      p { color: rgba(225,224,204,0.7); font-size: 14px; max-width: 320px; line-height: 1.3; }
+    `,
+    notes: "全屏视频 + SVG 噪点纹理 + 渐变遮罩的叠加组合。视频用 absolute inset-0 + object-cover，噪点用 mix-blend-mode: overlay，渐变从上到下黑→透明→黑压暗上下边缘。最终效果像电影胶片质感。视频 URL 托管在 CloudFront CDN，autoPlay loop muted。",
+    tags: ["video background", "noise texture", "cinematic", "overlay", "film grain"],
+    savedAt: "2026-07-07",
+  },
 ];
