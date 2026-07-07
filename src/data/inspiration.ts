@@ -956,4 +956,92 @@ export const inspirationItems: InspirationItem[] = [
     tags: ["italic", "font mixing", "emphasis", "heading", "serif"],
     savedAt: "2026-07-07",
   },
+
+  // ── Liquid Glass 导航栏（来自 Innovation Landing）──
+  {
+    id: "liquid-glass-navbar",
+    title: "Liquid Glass Navbar Pill",
+    category: "navigation",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/innovation-landing",
+    sourceName: "Innovation Landing · AndDream",
+    html: `<nav><div class="logo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>ANDREAM</div><div class="links"><a>Features</a><a>Pricing</a><a>About</a></div><div class="btns"><a>Sign Up</a><button>Login</button></div></nav>`,
+    css: `
+      body { background: black; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; }
+      nav {
+        display: flex; align-items: center; justify-content: space-between;
+        border-radius: 999px; padding: 12px 24px; width: 600px; max-width: 90%;
+        background: rgba(255,255,255,0.01); backdrop-filter: blur(4px);
+        box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+        position: relative; overflow: hidden;
+      }
+      nav::before {
+        content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1.4px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+      }
+      .logo { display: flex; align-items: center; gap: 8px; color: white; font-weight: 600; font-size: 16px; position: relative; font-family: 'Georgia', serif; }
+      .links { display: flex; gap: 32px; position: relative; }
+      .links a { color: rgba(255,255,255,0.8); font-size: 13px; font-weight: 500; cursor: pointer; position: relative; }
+      .links a:hover { color: white; }
+      .btns { display: flex; align-items: center; gap: 16px; position: relative; }
+      .btns a { color: white; font-size: 13px; font-weight: 500; cursor: pointer; }
+      button { background: rgba(255,255,255,0.01); backdrop-filter: blur(4px); border: none; border-radius: 999px; padding: 8px 20px; color: white; font-size: 13px; cursor: pointer; position: relative; box-shadow: inset 0 1px 1px rgba(255,255,255,0.1); }
+    `,
+    notes: "整条导航栏用 liquid-glass 材质包裹成一根大 pill。左 Logo + 中链接 + 右按钮，flexbox 三段式。Login 按钮也是 mini liquid-glass pill，形成嵌套玻璃效果。backdrop-blur 让视频背景透过导航栏呈毛玻璃感。适合视频 Hero 上方的覆盖导航。",
+    tags: ["glass", "navbar", "pill", "blur", "navigation"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── Hero 跳入标题（来自 Innovation Landing）──
+  {
+    id: "hero-jump-heading",
+    title: "Hero Jump-In Heading",
+    category: "headings",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/innovation-landing",
+    sourceName: "Innovation Landing · AndDream",
+    html: `<h1 class="jump">Know it then <em>all</em></h1><script>(function(){const w=document.querySelector('h1'),t=w.textContent;w.textContent='';let i=0;function add(){if(i>=t.length)return;const s=document.createElement('span');s.textContent=t[i];s.style.display='inline-block';s.style.animation='jumpIn 0.5s cubic-bezier(0.16,1,0.3,1) forwards';s.style.animationDelay=(i*0.04)+'s';w.appendChild(s);i++;setTimeout(add,40)}add()})()</script>`,
+    css: `
+      body { background: black; display: flex; align-items: center; justify-content: center; font-family: 'Georgia', serif; min-height: 100%; }
+      h1 { font-size: clamp(60px, 12vw, 120px); color: white; letter-spacing: -0.02em; }
+      h1 em { font-style: italic; color: rgba(255,255,255,0.6); }
+      @keyframes jumpIn { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+      h1 span { opacity: 0; }
+    `,
+    notes: "大标题逐字从下方跳出（y:30 → 0），每个字 delay 递增 0.04s。用 cubic-bezier(0.16,1,0.3,1) 让跳入有弹性减速感。配合 `<em>` 斜体降低透明度，关键词像轻音飘过。比逐词弹入更细腻——逐字比逐词多一倍的动画层次。",
+    tags: ["letter animation", "jump in", "hero", "serif", "staggered"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── Liquid Glass 图标按钮（来自 Innovation Landing）──
+  {
+    id: "liquid-glass-icon-buttons",
+    title: "Liquid Glass Icon Buttons",
+    category: "buttons",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/innovation-landing",
+    sourceName: "Innovation Landing · AndDream",
+    html: `<div class="row"><button class="glass-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></button><button class="glass-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h20v18H2z"/><path d="M7 7h10M7 12h10M7 17h6"/></svg></button><button class="glass-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></button></div>`,
+    css: `
+      body { background: black; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; }
+      .row { display: flex; gap: 16px; }
+      .glass-icon {
+        width: 56px; height: 56px; border-radius: 50%; border: none; cursor: pointer;
+        background: rgba(255,255,255,0.01); backdrop-filter: blur(4px);
+        box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+        display: flex; align-items: center; justify-content: center;
+        color: rgba(255,255,255,0.8); position: relative; overflow: hidden;
+        transition: all 0.2s;
+      }
+      .glass-icon::before {
+        content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1.4px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+      }
+      .glass-icon:hover { color: white; background: rgba(255,255,255,0.05); }
+    `,
+    notes: "圆形 liquid-glass 图标按钮：56px 圆形 + SVG 图标 + 渐变边框。hover 时图标变亮 + 背景微增。适合社交图标、底部导航、操作按钮组。可以嵌套在任何暗色背景上，毛玻璃效果会让底层视频/图片透过来。",
+    tags: ["glass", "icon button", "circle", "social", "blur"],
+    savedAt: "2026-07-07",
+  },
 ];
