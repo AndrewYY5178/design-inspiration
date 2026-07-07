@@ -1297,4 +1297,146 @@ export const inspirationItems: InspirationItem[] = [
     tags: ["HLS", "video streaming", "adaptive bitrate", "mux", "background"],
     savedAt: "2026-07-07",
   },
+
+  // ── 渐变发光 Contact 按钮（来自 3D Portfolio）──
+  {
+    id: "gradient-glow-contact-button",
+    title: "Gradient Glow Contact Button",
+    category: "buttons",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/3d-jack-portfolio-hero",
+    sourceName: "3D Portfolio · AndDream",
+    html: `<button>Contact Us</button>`,
+    css: `
+      body { background: #111; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; }
+      button {
+        padding: 12px 48px; border: none; border-radius: 999px;
+        font-size: 14px; font-weight: 500; text-transform: uppercase;
+        letter-spacing: 0.15em; color: white; cursor: pointer;
+        background: linear-gradient(123deg, #18011F 7%, #254E7A 37%, #4A78B0 72%, #1A1A1A 100%);
+        box-shadow: 0px 4px 4px rgba(37,78,122,0.25), inset 4px 4px 12px #254E7A;
+        outline: 2px solid white; outline-offset: -3px;
+        transition: opacity 0.2s;
+      }
+      button:hover { opacity: 0.8; }
+    `,
+    notes: "复杂的渐变按钮：4 色标（紫→靛蓝→浅蓝→深灰）+ 外发光 box-shadow + 内阴影 inset + 白色双层描边（outline + outline-offset -3px）。2px 白线在按钮内侧 3px 处形成'悬浮边框'效果。这个按钮用了 4 层视觉叠加：渐变底色 + 外发光 + 内阴影 + 内描边。",
+    tags: ["gradient", "inner shadow", "outline", "glow", "CTA"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── macOS 菜单栏（来自 Email Landing）──
+  {
+    id: "macos-menu-bar",
+    title: "macOS Menu Bar Strip",
+    category: "navigation",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/email-landing-page",
+    sourceName: "Email Landing · AndDream",
+    html: `<div class="bar"><div class="left"><svg viewBox="0 0 384 512" fill="currentColor" width="14" height="14"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9z"/></svg><b>ANDREAM</b><span>File</span><span>Edit</span><span>View</span></div><div class="right">Wed May 6 1:09 PM</div></div>`,
+    css: `
+      body { background: #0c0c0c; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; min-height: 100%; }
+      .bar { display: flex; align-items: center; justify-content: space-between; padding: 10px 24px; background: rgba(0,0,0,0.4); backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); width: 100%; max-width: 600px; border-radius: 4px; }
+      .left, .right { display: flex; align-items: center; gap: 16px; color: rgba(255,255,255,0.6); font-size: 12px; }
+      .left span { color: rgba(255,255,255,0.5); }
+      b { color: white; font-weight: 700; }
+      .right { color: rgba(255,255,255,0.5); font-size: 12px; }
+    `,
+    notes: "仿 macOS 顶部菜单栏：黑色半透明底 + backdrop-blur + 上下 1px 白边框。Apple Logo SVG + 粗体 App 名 + 菜单项（File/Edit/View...）+ 右侧日期。菜单项在小屏幕逐步隐藏（hidden sm:inline / hidden md:inline）。给页面增加'桌面应用'的沉浸感。",
+    tags: ["macOS", "menu bar", "Apple", "desktop", "immersive"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── AI 摘要卡片（来自 Email Landing · Inbox）──
+  {
+    id: "ai-summary-card",
+    title: "AI Summary Card in Inbox",
+    category: "cards",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/email-landing-page",
+    sourceName: "Email Landing · AndDream",
+    html: `<div class="card"><div class="header"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A4F4FD" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg><span>Summary by ANDREAM</span></div><p>Your team closed 23 issues, merged 14 PRs, and shipped 2 features. Top contributor: Marcus. No action needed.</p></div>`,
+    css: `
+      body { background: #0c0c0c; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; padding: 20px; }
+      .card { background: rgba(74,120,176,0.1); border: 1px solid rgba(74,120,176,0.2); border-radius: 8px; padding: 12px; max-width: 320px; }
+      .header { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+      .header span { font-size: 11px; font-weight: 600; color: #A4F4FD; }
+      p { font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+    `,
+    notes: "收件箱内的 AI 摘要卡片：靛蓝半透明底 + 靛蓝边框 + 青色图标/标题（#A4F4FD）。用 Sparkles/Stars 图标暗示 AI 生成。适合邮件客户端、Dashboard 等 SaaS 产品的 AI 功能展示。",
+    tags: ["AI", "summary", "inbox", "card", "SaaS"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 深紫实色卡片（来自 USD Halo）──
+  {
+    id: "dark-purple-solid-card",
+    title: "Dark Purple Solid Card",
+    category: "cards",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/halo-usd-landing",
+    sourceName: "USD Halo · AndDream",
+    html: `<div class="card"><h3>Always fluid,<br/>always pegged.</h3><p>Keep fully anchored with on-demand access to funds — no lockups or waits.</p></div>`,
+    css: `
+      body { background: #F5F5F5; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; }
+      .card { background: #2B2644; border-radius: 16px; padding: 28px; width: 260px; min-height: 320px; display: flex; flex-direction: column; justify-content: space-between; }
+      h3 { font-family: 'Georgia', serif; font-size: 24px; font-weight: 500; color: white; line-height: 1.2; letter-spacing: -0.02em; }
+      p { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+    `,
+    notes: "深紫色实色卡片（#2B2644）：无渐变无毛玻璃，纯色填充。白色衬线标题 + 60% 透明度白色正文。与同组的图片卡片和玻璃卡片形成材质对比。适合 4 列网格中作为'实心锚点'——周围是图片/视频/玻璃卡，它是唯一不透明的。",
+    tags: ["solid", "purple", "dark", "contrast", "material mix"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── 功能 Check 列表卡片（来自 Prisma Studio）──
+  {
+    id: "feature-checklist-card",
+    title: "Feature Checklist Card",
+    category: "cards",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/prisma-landing",
+    sourceName: "Prisma Studio · AndDream",
+    html: `<div class="card"><span class="num">02</span><h3>Smart Critiques</h3><ul><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DEDBC8" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>AI-powered color analysis</li><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DEDBC8" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Creative notes on every frame</li><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DEDBC8" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Integrated tool ecosystem</li></ul><a>Learn more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#DEDBC8" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>`,
+    css: `
+      body { background: black; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; padding: 20px; }
+      .card { background: #212121; border-radius: 16px; padding: 20px; width: 240px; display: flex; flex-direction: column; }
+      .num { font-family: 'Georgia', serif; font-size: 24px; font-weight: 700; color: #DEDBC8; margin-bottom: 4px; }
+      h3 { font-size: 16px; font-weight: 500; color: #E1E0CC; margin-bottom: 16px; }
+      ul { list-style: none; padding: 0; margin: 0 0 16px; flex: 1; }
+      li { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #9CA3AF; padding: 3px 0; }
+      li svg { flex-shrink: 0; margin-top: 2px; }
+      a { font-size: 12px; color: #DEDBC8; text-decoration: none; display: flex; align-items: center; gap: 4px; }
+      a svg { transform: rotate(-45deg); transition: transform 0.3s; }
+      a:hover svg { transform: rotate(0deg); }
+    `,
+    notes: "深灰卡片 + 大数字编号 + 标题 + Check SVG 图标列表 + Learn more 斜箭头链接。数字用衬线体（Playfair/Georgia），列表项用 Check 图标而非默认 bullet。'Learn more' 的箭头初始 -45deg → hover 旋转到 0deg。适合 Features 网格。",
+    tags: ["checklist", "feature card", "numbered", "arrow rotate", "dark"],
+    savedAt: "2026-07-07",
+  },
+
+  // ── NFT 视频评分卡片（来自 Orbis NFT）──
+  {
+    id: "nft-score-video-card",
+    title: "NFT Score Video Card",
+    category: "cards",
+    sourceUrl: "https://andrewyy5178.github.io/motionsites-showcase/#/templates/orbis-nft-landing",
+    sourceName: "Orbis NFT · AndDream",
+    html: `<div class="card"><div class="video"><div class="badge"><span class="star">★</span> 9.0/10 <span class="name">Void Walker</span></div></div></div>`,
+    css: `
+      body { background: #010828; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; padding: 20px; }
+      .card { width: 280px; border-radius: 32px; padding: 18px; position: relative; overflow: hidden;
+        background: rgba(255,255,255,0.01); backdrop-filter: blur(4px);
+        box-shadow: inset 0 1px 1px rgba(255,255,255,0.1); }
+      .card::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1.4px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+      .video { position: relative; padding-bottom: 100%; border-radius: 24px; overflow: hidden;
+        background: linear-gradient(135deg, #1a1a3e 0%, #0d1b2a 50%, #1a1a3e 100%); }
+      .badge { position: absolute; bottom: 16px; left: 16px; display: flex; align-items: center; gap: 8px;
+        background: rgba(255,255,255,0.01); backdrop-filter: blur(4px);
+        border-radius: 999px; padding: 6px 16px;
+        box-shadow: inset 0 1px 1px rgba(255,255,255,0.1); color: white; font-size: 14px; }
+      .star { color: #6FFF00; font-size: 12px; font-weight: 700; }
+      .name { color: rgba(255,255,255,0.8); }
+    `,
+    notes: "NFT 收藏卡片：外层 liquid-glass 大圆角（32px）+ 内层正方形视频区（24px 圆角）+ 左下角 liquid-glass pill 评分标签（霓虹绿星级 + 名称）。hover 整体变亮（bg-white/10）。适合 NFT 市场、作品集网格。评分 pill 也是毛玻璃材质，形成嵌套玻璃效果。",
+    tags: ["NFT", "video card", "score badge", "nested glass", "collection"],
+    savedAt: "2026-07-07",
+  },
 ];
